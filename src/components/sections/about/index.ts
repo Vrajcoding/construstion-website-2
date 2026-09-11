@@ -1,0 +1,8 @@
+export { default as AboutHeroSection } from "./AboutHeroSection"
+export { default as AboutImpactSection } from "./AboutImpactSection"
+export { default as AboutValuesSection } from "./AboutValuesSection"
+export { default as AboutOfficesSection } from "./AboutOfficesSection"
+export { default as AboutTeamSection } from "./AboutTeamSection"
+export { default as AboutFaqSection } from "./AboutFaqSection"
+export { default as AboutStorySection } from "./AboutStorySection"
+export { default as AboutInstagramSection } from "./AboutInstagramSection"

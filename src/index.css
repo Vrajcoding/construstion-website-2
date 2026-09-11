@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: "Mona Sans:Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "Mona Sans:Bold";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "Mona Sans:Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "Mona Sans:Semi_Bold";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Mona Sans:Regular', 'Mona Sans', system-ui, -apple-system, sans-serif;
+  color: #0e0e0e;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+#root {
+  min-height: 100%;
+}
+
+::selection {
+  background-color: #ffd43e;
+  color: #0e0e0e;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}

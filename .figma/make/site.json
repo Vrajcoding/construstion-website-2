@@ -1,0 +1,10 @@
+{
+  "description": "Delivers a fully detailed, styled webpage with organized CSS for seamless handoff to agents, streamlining web design and development workflows.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
