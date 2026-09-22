@@ -14,17 +14,19 @@ import {
 } from "../types"
 
 // Asset imports from imports directory
-import imgHero from "../../imports/10185a3f5f88a38f8bcacfc25ce58d6da8273c1a.png"
+import imgHero from "../../imports/home-page-image.jpg"
 import imgAboutWorker from "../../imports/f9641b74eab7876de42a46053eda0bacf22852e2.png"
 import imgAboutTeam from "../../imports/1ad010fa1382c9d050d9cb909c3a89770a426701.png"
 import imgService1 from "../../imports/b3e4a346bae70ceaf0c89f2ea4affd9de0a49894.png"
 import imgService2 from "../../imports/79dd92e28fbfb330bbcf52d469228d9c4a793783.png"
 import imgService3 from "../../imports/f85c9045cdb0319fa07c80500d2d30e9393696c3.png"
 import imgVideoThumb from "../../imports/55cdf6636d96e94ea6678b173e960498a200267f.png"
-import imgCtaBuilding from "../../imports/7c1558adf697e4a8c82a0798bc0b706a59430731.png"
+import imgCtaBuilding from "../../imports/wall-image.png"
+import imgWallImage from "../../imports/wall-image.png"
 import imgProject1 from "../../imports/2a19c9c381470d4d62385afa418677c3ba02379b.png"
 import imgProject2 from "../../imports/00c0e6650d0225015d4bdb8a271c67518b0892be.png"
 import imgProject3 from "../../imports/a9da9c8505905e52f88d58ebb52495a1907ac810.png"
+import imgOfficeLa from "../../imports/office-la.png"
 import imgTestimonialStructure from "../../imports/cbe1c1f0dd1d8a41c62cb9b180de6d5834406827.png"
 import imgTestimonialAvatar from "../../imports/a7be56f17b9d8fae3c5224f02b27724b75f4169c.png"
 import imgBlog1 from "../../imports/382844f52488401d19598d23ba66a83216ce0115.png"
@@ -32,6 +34,11 @@ import imgBlog2 from "../../imports/5cd29f14b45346137a6c3cc28f7840f705b60e72.png
 import imgBlog3 from "../../imports/ea7529eb62807bd8df4481e35977587eb7aaa41e.png"
 import imgRoofBanner from "../../imports/roof_construction_banner.jpg"
 import imgPrinter from "../../imports/printerimage.png"
+import logoAgency from "../../imports/agency.svg"
+import logoApplication from "../../imports/application.svg"
+import logoCompany from "../../imports/company.svg"
+import logoBusiness from "../../imports/business.svg"
+import logoEnterprise from "../../imports/enterprise.svg"
 
 export const siteImages = {
   hero: imgHero,
@@ -44,6 +51,7 @@ export const siteImages = {
   service3: imgService3,
   videoThumb: imgVideoThumb,
   ctaBuilding: imgCtaBuilding,
+  wallImage: imgWallImage,
   project1: imgProject1,
   project2: imgProject2,
   project3: imgProject3,
@@ -92,7 +100,12 @@ export const megaMenuData = {
       { label: "SHOP SINGLE", href: "#home", route: "home" },
       { label: "REQUEST A QUOTE", href: "#quote", isQuote: true },
       { label: "COMING SOON", href: "#home", route: "home" },
-      { label: "MORE WEBFLOW TEMPLATE", href: "#templates", isBold: true, route: "home" },
+      {
+        label: "MORE WEBFLOW TEMPLATE",
+        href: "#templates",
+        isBold: true,
+        route: "home",
+      },
     ],
   },
   utilityPages: [
@@ -201,11 +214,11 @@ export const servicesPageData: ServiceItem[] = [
 ]
 
 export const clientLogos: ClientLogo[] = [
-  { id: "dynamic", name: "DYNAMIC" },
-  { id: "labyrinth", name: "LABYRINTH" },
-  { id: "integrity", name: "INTEGRITY" },
-  { id: "transcend", name: "TRANSCEND" },
-  { id: "enterprise", name: "ENTERPRISE" },
+  { id: "agency", name: "agency", logo: logoAgency },
+  { id: "application", name: "application", logo: logoApplication },
+  { id: "company", name: "company", logo: logoCompany },
+  { id: "business", name: "business", logo: logoBusiness },
+  { id: "enterprise", name: "enterprise", logo: logoEnterprise },
 ]
 
 export const projectsData: ProjectItem[] = [
@@ -272,13 +285,43 @@ export const projectsData: ProjectItem[] = [
   },
 ]
 
-export const testimonialData: TestimonialItem = {
-  id: "t1",
-  quote: "Great quality of service & delivered on time",
-  author: "Mark Zuckerberg",
-  role: "Tech Lead at Enterprise",
-  avatar: imgTestimonialAvatar,
-}
+export const testimonialsData: TestimonialItem[] = [
+  {
+    id: "t1",
+    quote: "Great quality of service & delivered on time",
+    description:
+      "Lorem ipsum dolor sit amet consectetur sed potenti in justo augue volutpat nam diam ipsum morbi velit pretium facilisi",
+    author: "John Carter",
+    role: "Project Client",
+    location: "New York, NY",
+    avatar: imgTestimonialAvatar,
+    image: imgTestimonialStructure,
+  },
+  {
+    id: "t2",
+    quote: "A great team that never underdelivers",
+    description:
+      "Lorem ipsum dolor sit amet consectetur sed potenti in justo augue volutpat nam diam ipsum morbi velit pretium facilisi",
+    author: "Matt Cannon",
+    role: "Property Developer",
+    location: "New York, NY",
+    avatar: imgTestimonialAvatar,
+    image: imgHero,
+  },
+  {
+    id: "t3",
+    quote: "A true team of experts contractors",
+    description:
+      "Lorem ipsum dolor sit amet consectetur sed potenti in justo augue volutpat nam diam ipsum morbi velit pretium facilisi",
+    author: "Sophie Moore",
+    role: "Architecture Director",
+    location: "New York, NY",
+    avatar: imgTestimonialAvatar,
+    image: imgAboutWorker,
+  },
+]
+
+export const testimonialData: TestimonialItem = testimonialsData[0]
 
 export const blogCategoriesData: BlogCategoryItem[] = [
   {
@@ -415,18 +458,18 @@ export const officeLocationsData: OfficeItem[] = [
     name: "LOS ANGELES",
     title: "Los Angeles, CA",
     description:
-      "Lorem ipsum dolor sit amet consectetur id senectus velit faucibus quisque at lorem.",
+      "Lorem ipsum dolor sit amet consectetur senectus velit faucibus quisque at ut vitae platea justo nec mattis.",
     email: "losangeles@construcfy.com",
     phone: "(212) 760 - 892",
-    location: "149 W 70th St, 9000 Los Angeles",
-    image: siteImages.project3,
+    location: "149 W 70th St, 9000 Los Angeles, CA",
+    image: imgOfficeLa,
   },
   {
     id: "hollywood",
     name: "HOLLYWOOD HILLS",
     title: "Hollywood Hills, CA",
     description:
-      "Lorem ipsum dolor sit amet consectetur id senectus velit faucibus quisque at lorem.",
+      "Lorem ipsum dolor sit amet consectetur senectus velit faucibus quisque at ut vitae platea justo nec mattis.",
     email: "hollywood@construcfy.com",
     phone: "(212) 760 - 893",
     location: "8420 Sunset Blvd, Hollywood Hills, CA",
@@ -437,7 +480,7 @@ export const officeLocationsData: OfficeItem[] = [
     name: "MALIBU BEACH",
     title: "Malibu Beach, CA",
     description:
-      "Lorem ipsum dolor sit amet consectetur id senectus velit faucibus quisque at lorem.",
+      "Lorem ipsum dolor sit amet consectetur senectus velit faucibus quisque at ut vitae platea justo nec mattis.",
     email: "malibu@construcfy.com",
     phone: "(212) 760 - 894",
     location: "23410 Pacific Coast Hwy, Malibu, CA",

@@ -46,10 +46,7 @@ export default function HomePage({
       />
 
       {/* 5. Video & Quality Showcase + Partner Logos */}
-      <VideoSection
-        onPlayVideo={onPlayVideo}
-        onOpenQuote={onOpenQuote}
-      />
+      <VideoSection onPlayVideo={onPlayVideo} onOpenQuote={onOpenQuote} />
 
       {/* 6. Mid-Page Yellow CTA Promo Banner */}
       <CtaBannerSection onOpenQuote={onOpenQuote} />

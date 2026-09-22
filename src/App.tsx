@@ -1,5 +1,5 @@
 import React from "react"
-import { Navbar, Footer, FloatingBadge } from "./components/layout"
+import { Navbar, Footer } from "./components/layout"
 import {
   HomePage,
   AboutPage,
@@ -9,6 +9,7 @@ import {
   ContactPage,
 } from "./components/pages"
 import { QuoteModal, CartModal, VideoModal } from "./components/modals"
+import { StaircaseAnimation } from "./components/common"
 import { useNavigation, useModals } from "./hooks"
 
 export default function App() {
@@ -35,8 +36,25 @@ export default function App() {
         ? "yellow"
         : "white"
 
+  // Determine Staircase Transition color based on target page route
+  const staircaseColor =
+    currentPage === "blog" ||
+    currentPage === "contact" ||
+    currentPage === "services" ||
+    currentPage === "work"
+      ? "#ffd43e"
+      : "#ffffff"
+
   return (
     <div className="min-h-screen bg-white text-[#0e0e0e] flex flex-col font-['Mona_Sans:Regular',sans-serif] selection:bg-[#ffd43e] selection:text-[#0e0e0e] overflow-x-clip">
+      {/* 0. 4-Section Staircase Grid Wipe Transition on Initial Load & Route Changes */}
+      <StaircaseAnimation
+        key={`${currentPage}-${staircaseColor}`}
+        columnColor={staircaseColor}
+        isCurtain={true}
+        showReplay={false}
+      />
+
       {/* 1. Header Navigation Bar */}
       <Navbar
         theme={navTheme}
@@ -50,15 +68,9 @@ export default function App() {
       {/* 2. Main Page View Route Composition */}
       <main className="flex-1 w-full overflow-x-clip">
         {currentPage === "about" ? (
-          <AboutPage
-            onOpenQuote={() => openQuote()}
-            onNavigate={navigate}
-          />
+          <AboutPage onOpenQuote={() => openQuote()} onNavigate={navigate} />
         ) : currentPage === "blog" ? (
-          <BlogPage
-            onOpenQuote={() => openQuote()}
-            onNavigate={navigate}
-          />
+          <BlogPage onOpenQuote={() => openQuote()} onNavigate={navigate} />
         ) : currentPage === "contact" ? (
           <ContactPage onOpenQuote={() => openQuote()} />
         ) : currentPage === "services" ? (
@@ -86,15 +98,9 @@ export default function App() {
       </main>
 
       {/* 3. Global Dark Footer */}
-      <Footer
-        onOpenQuote={() => openQuote()}
-        onNavigate={navigate}
-      />
+      <Footer onOpenQuote={() => openQuote()} onNavigate={navigate} />
 
-      {/* 4. Global Floating Badge */}
-      <FloatingBadge />
-
-      {/* 5. Interactive Dialog Modals */}
+      {/* 4. Interactive Dialog Modals */}
       <QuoteModal
         isOpen={isQuoteOpen}
         onClose={closeQuote}

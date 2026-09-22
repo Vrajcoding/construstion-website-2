@@ -142,40 +142,41 @@ export default function AboutValuesSection({
   }
 
   return (
-    <section className="bg-[#f8f8f8] py-20 sm:py-28 lg:py-36 relative overflow-hidden">
+    <section className="bg-[#f8f8f8] py-14 sm:py-20 lg:py-28 relative overflow-hidden">
       {/* Top-Right Stepped Decorative Grid Pattern (Predefined Component) */}
       <div className="absolute top-0 right-0 z-0 pointer-events-none">
         <DecorativeGrid pattern="hero-checker" fillColor="white" />
       </div>
 
-      {/* Bottom-Left Subtle Grid Accent (Predefined Component) */}
+      {/* Bottom-Left 4-Boxes Staircase Accent */}
       <div className="absolute bottom-0 left-0 z-0 pointer-events-none">
-        <DecorativeGrid pattern="top-left" fillColor="white" />
+        <DecorativeGrid pattern="four-boxes" fillColor="white" />
       </div>
 
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Column: Pinned / Sticky Centered Values Information */}
-          <div className="lg:col-span-5 lg:sticky lg:top-32 self-start space-y-6 pt-2">
+          <div className="lg:col-span-5 lg:sticky lg:top-28 self-start space-y-4 sm:space-y-6 pt-2">
             {/* Tag (Predefined Component) */}
             <SectionTag text="VALUES" theme="dark" />
 
             {/* Title */}
-            <h2 className="text-4xl sm:text-5xl lg:text-[62px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight leading-[1.08]">
+            <h2 className="text-3xl sm:text-5xl lg:text-[54px] xl:text-[62px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight leading-[1.08] sm:leading-[1.12]">
               Our values
             </h2>
 
             {/* Description */}
-            <p className="text-[#646464] text-[17px] sm:text-[18px] font-['Mona_Sans:Regular',sans-serif] leading-[30px] max-w-md pt-2">
-              Lorem ipsum dolor sit amet consectetur non sit elementum sem libero
-              a tellus id pretium nisi posuere consectetur eu.
+            <p className="text-[#646464] text-base sm:text-lg font-['Mona_Sans:Regular',sans-serif] leading-relaxed sm:leading-[30px] max-w-md pt-1">
+              Lorem ipsum dolor sit amet consectetur non sit elementum sem
+              libero a tellus id pretium nisi posuere consectetur eu.
             </p>
 
-            {/* Contact Us Outline Pill Button (Predefined Component) */}
-            <div className="pt-4">
+            {/* Contact Us Outline Pill Button */}
+            <div className="pt-2 sm:pt-4">
               <Button
                 variant="outline"
                 size="md"
+                fullWidthMobile
                 onClick={onContactClick}
               >
                 Contact us

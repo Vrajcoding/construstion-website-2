@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import SectionTag from "../../common/SectionTag"
+import Button from "../../common/Button"
+import DecorativeGrid from "../../common/DecorativeGrid"
 import { siteImages } from "../../../data/siteData"
 
 export default function BlogNewsletterSection() {
@@ -15,39 +17,40 @@ export default function BlogNewsletterSection() {
   }
 
   return (
-    <section className="bg-white pt-16 pb-12 sm:pt-24 sm:pb-16 lg:pt-32 lg:pb-24 relative overflow-visible">
-      {/* Banner Container: Left indentation, full-width extending to right edge */}
-      <div className="w-full pl-4 sm:pl-8 lg:pl-16 xl:pl-28 pr-0">
-        <div className="bg-[#ffd43e] relative rounded-none overflow-visible shadow-xl w-full min-h-[520px] lg:min-h-[620px] xl:min-h-[660px] flex items-center">
-          {/* Top-Right Stepped Decorative White Square Accent flush with right edge */}
+    <section className="bg-white py-0 sm:py-20 lg:py-32 relative overflow-hidden lg:overflow-visible">
+      <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
+        <div className="bg-[#ffd43e] relative rounded-none sm:rounded-2xl lg:rounded-none overflow-hidden lg:overflow-visible shadow-xl w-full">
+          {/* Top-Right Stepped Decorative White Square Accent */}
           <div
-            className="absolute top-0 right-0 w-32 h-32 sm:w-44 sm:h-44 lg:w-56 lg:h-56 bg-white pointer-events-none z-0"
+            className="absolute top-0 right-0 w-[54px] h-[54px] sm:w-28 sm:h-28 lg:w-48 lg:h-40 bg-white pointer-events-none z-10"
             aria-hidden="true"
           />
 
-          {/* Bottom-Right Decorative White Square Accent behind Typewriter Keyboard */}
-          <div
-            className="absolute bottom-0 right-16 sm:right-28 lg:right-44 w-28 h-28 sm:w-36 sm:h-36 lg:w-48 lg:h-48 bg-white pointer-events-none z-10"
-            aria-hidden="true"
-          />
+          {/* Bottom-Right Decorative Staircase Grid Accent (Image 1 & 2) */}
+          <div className="absolute bottom-0 right-0 pointer-events-none z-30">
+            <DecorativeGrid
+              pattern="staircase-br"
+              fillColor="white"
+              className="w-20 h-20 sm:w-32 sm:h-32 lg:w-36 lg:h-36"
+            />
+          </div>
 
-          {/* Flexbox Layout for easy alignment and spacious height */}
-          <div className="flex flex-col lg:flex-row items-center justify-between relative z-10 w-full">
-            {/* Left Content Area: Form & Copy with increased vertical height */}
-            <div className="flex-1 w-full p-8 sm:p-14 lg:py-24 lg:pl-20 lg:pr-12 xl:py-28 xl:pl-24 xl:pr-16 flex flex-col justify-center">
+          {/* Content Layout */}
+          <div className="flex flex-col lg:flex-row items-center justify-between relative z-20 w-full">
+            {/* Left Content Area */}
+            <div className="flex-1 w-full px-6 pt-[93px] pb-[50px] sm:p-10 lg:py-20 lg:pl-16 lg:pr-8 xl:py-24 xl:pl-20 flex flex-col justify-center">
               <SectionTag
                 text="GET IN TOUCH"
                 theme="dark"
-                hideLine
-                className="mb-6"
+                className="mb-4 sm:mb-6"
               />
 
-              <h2 className="text-4xl sm:text-5xl lg:text-[62px] xl:text-[70px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight leading-[1.06] mb-8">
+              <h2 className="text-[34px] sm:text-4xl md:text-5xl lg:text-[54px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight leading-[1.12] lg:leading-[1.1] mb-4 sm:mb-6">
                 Subscribe to our <br className="hidden sm:inline" />
                 newsletter
               </h2>
 
-              <p className="text-[#2f2f2f] text-[17px] sm:text-[19px] leading-[30px] sm:leading-[32px] font-['Mona_Sans:Medium',sans-serif] font-medium max-w-lg mb-10 sm:mb-14">
+              <p className="text-[#0e0e0e]/85 text-[15px] sm:text-base lg:text-[17px] leading-[24px] sm:leading-[28px] font-['Mona_Sans:Regular',sans-serif] font-normal max-w-lg mb-8 sm:mb-10">
                 Lorem ipsum dolor sit amet consectetur senectus velit faucibus
                 non quisque at ut vitae platea justo nec mattis.
               </p>
@@ -59,22 +62,22 @@ export default function BlogNewsletterSection() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 max-w-lg"
+                  className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 sm:gap-4 max-w-lg"
                 >
-                  <div className="flex-1 border-b-2 border-[#0e0e0e]/30 focus-within:border-[#0e0e0e] transition-colors pb-3">
+                  <div className="flex-1 border-b border-[#0e0e0e]/30 focus-within:border-[#0e0e0e] transition-colors pb-3">
                     <input
                       type="email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
-                      className="w-full bg-transparent outline-none text-[#0e0e0e] placeholder-[#0e0e0e]/60 font-['Mona_Sans:Regular',sans-serif] text-base sm:text-lg"
+                      className="w-full bg-transparent outline-none text-[#0e0e0e] placeholder-[#0e0e0e]/70 font-['Mona_Sans:Regular',sans-serif] font-normal text-base"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="bg-[#0e0e0e] hover:bg-neutral-800 text-white font-['Mona_Sans:Bold',sans-serif] font-bold text-base px-9 sm:px-11 py-4 sm:py-5 rounded-full transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg active:scale-95 shrink-0 text-center"
+                    className="w-full sm:w-auto bg-[#0e0e0e] text-white py-4 sm:py-3.5 px-8 rounded-full font-['Mona_Sans:Bold',sans-serif] font-bold text-base hover:bg-neutral-800 transition-colors shadow-none text-center cursor-pointer shrink-0"
                   >
                     Subscribe
                   </button>
@@ -82,13 +85,13 @@ export default function BlogNewsletterSection() {
               )}
             </div>
 
-            {/* Right Column: Increased Height Typewriter Image with Paper Overhanging Above Banner */}
-            <div className="flex-shrink-0 w-full lg:w-[48%] xl:w-[46%] 2xl:w-[44%] relative flex items-end justify-center lg:justify-end pr-0 lg:pr-6 xl:pr-12 overflow-visible">
-              <div className="relative w-full max-w-[500px] sm:max-w-[580px] lg:max-w-[660px] xl:max-w-[740px] 2xl:max-w-[800px] -mt-24 sm:-mt-32 lg:-mt-48 xl:-mt-60 overflow-visible">
+            {/* Right Column: Typewriter Image (Image 1 desktop layout) */}
+            <div className="w-full lg:w-[48%] xl:w-[46%] relative flex items-end justify-center lg:justify-end px-4 sm:px-6 pb-0 lg:pb-0 lg:px-0 lg:pr-8 mt-4 sm:mt-6 lg:mt-0">
+              <div className="relative w-full max-w-[340px] sm:max-w-[440px] lg:max-w-[520px] xl:max-w-[580px] lg:-mt-20 xl:-mt-28 lg:-mb-6 xl:-mb-8">
                 <img
                   src={siteImages.typewriterBanner}
                   alt="Vintage typewriter with white paper loaded in carriage"
-                  className="w-full h-auto max-h-[620px] lg:max-h-[720px] xl:max-h-[820px] object-contain drop-shadow-2xl relative z-20"
+                  className="w-full h-auto object-contain drop-shadow-2xl relative z-20 block"
                 />
               </div>
             </div>

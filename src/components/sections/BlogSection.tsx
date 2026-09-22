@@ -1,6 +1,7 @@
 import React from "react"
 import SectionTag from "../common/SectionTag"
 import Button from "../common/Button"
+import DecorativeGrid from "../common/DecorativeGrid"
 import { blogPostsData } from "../../data/siteData"
 
 export interface BlogSectionProps {
@@ -9,18 +10,23 @@ export interface BlogSectionProps {
 
 export default function BlogSection({ onSelectArticle }: BlogSectionProps) {
   return (
-    <section id="blog" className="bg-white py-16 sm:py-24 lg:py-32">
-      <div className="max-w-[1220px] mx-auto px-4 sm:px-6">
+    <section id="blog" className="bg-white py-14 sm:py-20 lg:py-28 relative overflow-hidden">
+      {/* Bottom-Right 4-Boxes Staircase Accent */}
+      <div className="absolute bottom-0 right-0 pointer-events-none z-0">
+        <DecorativeGrid pattern="four-boxes" fillColor="yellow" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Centered Section Header */}
-        <div className="text-center space-y-6 max-w-2xl mx-auto mb-16 sm:mb-20">
-          <SectionTag text="BLOG" className="justify-center" />
-          <h2 className="text-4xl sm:text-5xl lg:text-[62px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight leading-[1.12] sm:leading-[70px]">
+        <div className="text-center space-y-3 sm:space-y-4 max-w-2xl mx-auto mb-10 sm:mb-16">
+          <SectionTag text="OUR BLOG" dualLines className="justify-center" />
+          <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight leading-[1.08] sm:leading-[1.12]">
             Latest news & articles
           </h2>
         </div>
 
         {/* 3-Card Article Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-12 sm:mb-16">
           {blogPostsData.map((post) => (
             <article
               key={post.id}
@@ -29,8 +35,8 @@ export default function BlogSection({ onSelectArticle }: BlogSectionProps) {
             >
               {/* Card Body */}
               <div className="flex flex-col">
-                {/* Sharp Rectangle Image */}
-                <div className="relative w-full h-[260px] sm:h-[300px] lg:h-[340px] overflow-hidden bg-neutral-900 rounded-none mb-6">
+                {/* Responsive Aspect Ratio Image */}
+                <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] overflow-hidden bg-neutral-900 rounded-none mb-5 sm:mb-6">
                   <img
                     src={post.image}
                     alt={post.title}
@@ -39,27 +45,27 @@ export default function BlogSection({ onSelectArticle }: BlogSectionProps) {
                 </div>
 
                 {/* Title & Excerpt */}
-                <div className="flex flex-col gap-[11px] mb-6">
-                  <h3 className="text-2xl sm:text-[24px] font-['Mona_Sans:Semi_Bold',sans-serif] font-semibold text-[#0e0e0e] group-hover:text-neutral-700 leading-[34px] transition-colors">
+                <div className="flex flex-col gap-2.5 mb-5 sm:mb-6">
+                  <h3 className="text-lg sm:text-xl lg:text-[22px] font-['Mona_Sans:Semi_Bold',sans-serif] font-semibold text-[#0e0e0e] group-hover:text-neutral-700 leading-snug sm:leading-[30px] transition-colors">
                     {post.title}
                   </h3>
-                  <p className="text-[#646464] text-base sm:text-[18px] font-['Mona_Sans:Medium',sans-serif] font-medium leading-[30px]">
+                  <p className="text-[#646464] text-sm sm:text-base font-['Mona_Sans:Medium',sans-serif] font-medium leading-relaxed sm:leading-[24px] line-clamp-2">
                     {post.excerpt}
                   </p>
                 </div>
               </div>
 
               {/* Horizontal Divider Line & Footer */}
-              <div className="mt-auto pt-6 border-t border-[#e7e7e7] flex items-center justify-between">
-                <div className="flex items-center text-[15px] sm:text-[16px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-[0.96px] uppercase">
+              <div className="mt-auto pt-5 sm:pt-6 border-t border-[#e7e7e7] flex items-center justify-between">
+                <div className="flex items-center text-xs sm:text-sm font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-[0.96px] uppercase">
                   <span>{post.category || "REMODELING"}</span>
-                  <span className="inline-block w-7 h-px bg-[#939393] mx-3" />
+                  <span className="inline-block w-6 sm:w-7 h-px bg-[#939393] mx-2.5 sm:mx-3" />
                   <span>{post.date}</span>
                 </div>
 
-                <div className="text-[#0e0e0e] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">
+                <div className="text-[#0e0e0e] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5 sm:w-6 sm:h-6"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -67,8 +73,7 @@ export default function BlogSection({ onSelectArticle }: BlogSectionProps) {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
                   </svg>
                 </div>
               </div>
@@ -81,6 +86,7 @@ export default function BlogSection({ onSelectArticle }: BlogSectionProps) {
           <Button
             variant="outline"
             size="lg"
+            fullWidthMobile
             onClick={() => onSelectArticle?.("All Articles")}
           >
             Browse all articles
@@ -90,4 +96,3 @@ export default function BlogSection({ onSelectArticle }: BlogSectionProps) {
     </section>
   )
 }
-

@@ -14,11 +14,7 @@ export default function Logo({
   className = "",
 }: LogoProps) {
   const fillColor =
-    theme === "yellow"
-      ? "#FFD43E"
-      : theme === "light"
-        ? "#FFFFFF"
-        : "#0E0E0E"
+    theme === "yellow" ? "#FFD43E" : theme === "light" ? "#FFFFFF" : "#0E0E0E"
   const textColor = theme === "light" ? "text-white" : "text-[#0e0e0e]"
 
   const sizeMap = {

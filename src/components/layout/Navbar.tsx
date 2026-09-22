@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import Logo from "../common/Logo"
+import Button from "../common/Button"
 import { navLeftItems, navRightItems, megaMenuData } from "../../data/siteData"
 
 export interface NavbarProps {
@@ -21,7 +22,8 @@ export default function Navbar({
 }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [pagesDropdownOpen, setPagesDropdownOpen] = useState(false)
-  const [mobilePagesAccordionOpen, setMobilePagesAccordionOpen] = useState(false)
+  const [mobilePagesAccordionOpen, setMobilePagesAccordionOpen] =
+    useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const isDark = theme === "dark"
@@ -55,7 +57,7 @@ export default function Navbar({
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     label: string,
-    href: string
+    href: string,
   ) => {
     const lower = label.toLowerCase()
     if (
@@ -82,7 +84,7 @@ export default function Navbar({
 
   const handleMegaMenuClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    link: { label: string; href: string; route?: string; isQuote?: boolean }
+    link: { label: string; href: string; route?: string; isQuote?: boolean },
   ) => {
     e.preventDefault()
     setPagesDropdownOpen(false)
@@ -101,10 +103,10 @@ export default function Navbar({
 
   return (
     <header className={`${headerBg} w-full relative z-40 transition-colors`}>
-      <div className="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16">
-        <div className="flex items-center justify-between py-6 sm:py-7 lg:py-8 min-h-[96px] sm:min-h-[108px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between py-5 sm:py-6 lg:py-7 min-h-[84px] sm:min-h-[96px]">
           {/* Desktop Left Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 2xl:gap-10">
             {navLeftItems.map((item) => {
               const isActive =
                 item.label.toLowerCase() === currentPage.toLowerCase()
@@ -113,8 +115,9 @@ export default function Navbar({
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleLinkClick(e, item.label, item.href)}
-                  className={`font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.96px] ${navTextColor} hover:opacity-75 transition-opacity uppercase relative py-1.5 ${isActive ? "font-bold" : ""
-                    }`}
+                  className={`font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.96px] ${navTextColor} hover:opacity-75 transition-opacity uppercase relative py-1.5 ${
+                    isActive ? "font-bold" : ""
+                  }`}
                 >
                   {item.label}
                   {isActive && (
@@ -147,7 +150,7 @@ export default function Navbar({
           </div>
 
           {/* Desktop Right Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 2xl:gap-10">
             {navRightItems.map((item) => {
               const isActive =
                 item.label.toLowerCase() === currentPage.toLowerCase()
@@ -168,8 +171,9 @@ export default function Navbar({
                     >
                       <span>{item.label}</span>
                       <svg
-                        className={`w-3.5 h-3.5 transition-transform duration-200 ${pagesDropdownOpen ? "rotate-180" : ""
-                          }`}
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          pagesDropdownOpen ? "rotate-180" : ""
+                        }`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -185,9 +189,7 @@ export default function Navbar({
 
                     {/* Mega Menu Dropdown */}
                     {pagesDropdownOpen && (
-                      <div
-                        className="absolute top-full -right-48 lg:-right-60 xl:-right-72 mt-3 w-[880px] lg:w-[940px] xl:w-[980px] max-w-[calc(100vw-32px)] bg-white text-[#0e0e0e] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] p-8 sm:p-10 lg:p-12 z-50 animate-in fade-in slide-in-from-top-2 duration-150 rounded-none border border-black/5 cursor-default select-none"
-                      >
+                      <div className="absolute top-full right-0 mt-3 w-[820px] max-w-[calc(100vw-32px)] bg-white text-[#0e0e0e] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] p-6 sm:p-8 lg:p-10 z-50 animate-in fade-in slide-in-from-top-2 duration-150 rounded-none border border-black/5 cursor-default select-none">
                         <div className="grid grid-cols-12 gap-8 lg:gap-12">
                           {/* MAIN PAGES (3 Columns - 9 cols) */}
                           <div className="col-span-12 lg:col-span-9">
@@ -202,7 +204,9 @@ export default function Navbar({
                                   <a
                                     key={link.label}
                                     href={link.href}
-                                    onClick={(e) => handleMegaMenuClick(e, link)}
+                                    onClick={(e) =>
+                                      handleMegaMenuClick(e, link)
+                                    }
                                     className="font-['Mona_Sans:Medium',sans-serif] text-[14px] sm:text-[15px] font-medium tracking-[0.8px] text-[#0e0e0e] hover:text-[#ffd43e] transition-colors uppercase cursor-pointer text-left"
                                   >
                                     {link.label}
@@ -216,7 +220,9 @@ export default function Navbar({
                                   <a
                                     key={link.label}
                                     href={link.href}
-                                    onClick={(e) => handleMegaMenuClick(e, link)}
+                                    onClick={(e) =>
+                                      handleMegaMenuClick(e, link)
+                                    }
                                     className="font-['Mona_Sans:Medium',sans-serif] text-[14px] sm:text-[15px] font-medium tracking-[0.8px] text-[#0e0e0e] hover:text-[#ffd43e] transition-colors uppercase cursor-pointer text-left"
                                   >
                                     {link.label}
@@ -230,9 +236,12 @@ export default function Navbar({
                                   <a
                                     key={link.label}
                                     href={link.href}
-                                    onClick={(e) => handleMegaMenuClick(e, link)}
-                                    className={`font-['Mona_Sans:Medium',sans-serif] text-[14px] sm:text-[15px] tracking-[0.8px] text-[#0e0e0e] hover:text-[#ffd43e] transition-colors uppercase cursor-pointer text-left ${link.isBold ? "font-bold" : "font-medium"
-                                      }`}
+                                    onClick={(e) =>
+                                      handleMegaMenuClick(e, link)
+                                    }
+                                    className={`font-['Mona_Sans:Medium',sans-serif] text-[14px] sm:text-[15px] tracking-[0.8px] text-[#0e0e0e] hover:text-[#ffd43e] transition-colors uppercase cursor-pointer text-left ${
+                                      link.isBold ? "font-bold" : "font-medium"
+                                    }`}
                                   >
                                     {link.label}
                                   </a>
@@ -272,8 +281,9 @@ export default function Navbar({
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleLinkClick(e, item.label, item.href)}
-                  className={`font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.96px] ${navTextColor} hover:opacity-75 transition-opacity uppercase relative py-1 ${isActive ? "font-bold" : ""
-                    }`}
+                  className={`font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.96px] ${navTextColor} hover:opacity-75 transition-opacity uppercase relative py-1 ${
+                    isActive ? "font-bold" : ""
+                  }`}
                 >
                   {item.label}
                   {isActive && (
@@ -300,8 +310,9 @@ export default function Navbar({
           <div className="flex items-center gap-4 lg:hidden">
             <button
               onClick={onOpenCart}
-              className={`flex items-center gap-1 text-sm font-semibold px-3 py-1.5 rounded-full ${isDark ? "bg-white/10 text-white" : "bg-black/5 text-[#0e0e0e]"
-                }`}
+              className={`flex items-center gap-1 text-sm font-semibold px-3 py-1.5 rounded-full ${
+                isDark ? "bg-white/10 text-white" : "bg-black/5 text-[#0e0e0e]"
+              }`}
             >
               <span>CART</span>
               <span>({cartCount})</span>
@@ -309,10 +320,11 @@ export default function Navbar({
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-lg transition-colors focus:outline-none cursor-pointer ${isDark
+              className={`p-2 rounded-lg transition-colors focus:outline-none cursor-pointer ${
+                isDark
                   ? "text-white hover:bg-white/10"
                   : "text-[#0e0e0e] hover:bg-black/5"
-                }`}
+              }`}
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? (
@@ -351,8 +363,9 @@ export default function Navbar({
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div
-            className={`lg:hidden py-4 border-t flex flex-col gap-3 animate-in fade-in duration-200 ${isDark ? "border-white/10" : "border-black/10"
-              }`}
+            className={`lg:hidden py-4 border-t flex flex-col gap-3 animate-in fade-in duration-200 ${
+              isDark ? "border-white/10" : "border-black/10"
+            }`}
           >
             {navLeftItems.map((item) => (
               <a
@@ -362,10 +375,11 @@ export default function Navbar({
                   setMobileMenuOpen(false)
                   handleLinkClick(e, item.label, item.href)
                 }}
-                className={`px-2 py-2 text-base font-semibold tracking-wider rounded-lg uppercase ${isDark
+                className={`px-2 py-2 text-base font-semibold tracking-wider rounded-lg uppercase ${
+                  isDark
                     ? "text-white hover:bg-white/10"
                     : "text-[#0e0e0e] hover:bg-black/5"
-                  }`}
+                }`}
               >
                 {item.label}
               </a>
@@ -374,16 +388,20 @@ export default function Navbar({
             {/* Mobile Pages Accordion */}
             <div className="border-t border-black/10 dark:border-white/10 pt-2">
               <button
-                onClick={() => setMobilePagesAccordionOpen(!mobilePagesAccordionOpen)}
-                className={`w-full flex items-center justify-between px-2 py-2 text-base font-semibold tracking-wider rounded-lg uppercase ${isDark
+                onClick={() =>
+                  setMobilePagesAccordionOpen(!mobilePagesAccordionOpen)
+                }
+                className={`w-full flex items-center justify-between px-2 py-2 text-base font-semibold tracking-wider rounded-lg uppercase ${
+                  isDark
                     ? "text-white hover:bg-white/10"
                     : "text-[#0e0e0e] hover:bg-black/5"
-                  }`}
+                }`}
               >
                 <span>PAGES</span>
                 <svg
-                  className={`w-4 h-4 transition-transform ${mobilePagesAccordionOpen ? "rotate-180" : ""
-                    }`}
+                  className={`w-4 h-4 transition-transform ${
+                    mobilePagesAccordionOpen ? "rotate-180" : ""
+                  }`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -444,25 +462,29 @@ export default function Navbar({
                     setMobileMenuOpen(false)
                     handleLinkClick(e, item.label, item.href)
                   }}
-                  className={`px-2 py-2 text-base font-semibold tracking-wider rounded-lg uppercase ${isDark
+                  className={`px-2 py-2 text-base font-semibold tracking-wider rounded-lg uppercase ${
+                    isDark
                       ? "text-white hover:bg-white/10"
                       : "text-[#0e0e0e] hover:bg-black/5"
-                    }`}
+                  }`}
                 >
                   {item.label}
                 </a>
               ))}
 
             <div className="pt-2">
-              <button
+              <Button
+                variant={isDark ? "yellow" : "primary"}
+                size="md"
+                showArrow
+                fullWidthMobile
                 onClick={() => {
                   setMobileMenuOpen(false)
                   onOpenQuote?.()
                 }}
-                className="w-full py-3 bg-[#ffd43e] text-[#0e0e0e] font-bold rounded-full text-center cursor-pointer"
               >
-                Get a quote ↗
-              </button>
+                Get a quote
+              </Button>
             </div>
           </div>
         )}
@@ -470,4 +492,3 @@ export default function Navbar({
     </header>
   )
 }
-

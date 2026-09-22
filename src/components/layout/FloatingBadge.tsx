@@ -43,9 +43,20 @@ export default function FloatingBadge() {
           href="https://brixtemplates.com"
           target="_blank"
           rel="noreferrer"
-          className="text-xs font-bold text-[#4a3aff] hover:underline"
+          className="text-xs font-bold text-[#4a3aff] hover:underline inline-flex items-center gap-1"
         >
-          Hire our Webflow team →
+          <span>Hire our Webflow team</span>
+          <svg
+            className="w-3 h-3"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M7 17L17 7M17 7H7M17 7V17" />
+          </svg>
         </a>
       </div>
 

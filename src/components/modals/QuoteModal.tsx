@@ -32,7 +32,7 @@ export default function QuoteModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-white rounded-3xl p-6 sm:p-10 shadow-2xl overflow-hidden border border-neutral-100">
+      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-2xl border border-neutral-100">
         {/* Close Button */}
         <button
           onClick={onClose}

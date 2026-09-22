@@ -2,7 +2,7 @@ export interface NavItem {
   label: string
   href: string
   hasDropdown?: boolean
-  dropdownItems?: { label: string; href: string }[]
+  dropdownItems?: { label: string href: string }[]
 }
 
 export interface StatItem {
@@ -34,10 +34,13 @@ export interface ProjectItem {
 export interface TestimonialItem {
   id: string
   quote: string
+  description?: string
   author: string
-  role: string
+  role?: string
+  location?: string
   company?: string
   avatar: string
+  image?: string
 }
 
 export interface BlogPostItem {
@@ -54,6 +57,7 @@ export interface BlogPostItem {
 export interface ClientLogo {
   id: string
   name: string
+  logo?: string
   svg?: string
 }
 

@@ -12,12 +12,12 @@ export default function ProjectCard({
   project,
   onClick,
   className = "",
-  aspectHeight = "h-[460px] sm:h-[540px]",
+  aspectHeight = "w-full max-w-[400px] h-[400px] md:max-w-none md:h-auto md:aspect-square mx-auto",
 }: ProjectCardProps) {
   return (
     <div
       onClick={onClick}
-      className={`group cursor-pointer relative w-full ${aspectHeight} overflow-hidden bg-neutral-900 rounded-none shadow-md transition-all duration-300 ${className}`}
+      className={`group cursor-pointer relative ${aspectHeight} overflow-hidden bg-neutral-900 rounded-none shadow-md transition-all duration-300 ${className}`}
     >
       <img
         src={project.image}
@@ -26,15 +26,15 @@ export default function ProjectCard({
       />
 
       {/* Dark Gradient Overlay with Text */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 sm:p-10 flex flex-col justify-end">
-        <h3 className="text-2xl sm:text-[28px] font-['Mona_Sans:Semi_Bold',sans-serif] font-semibold text-white leading-[34px] sm:leading-[40px] mb-4 group-hover:text-[#ffd43e] transition-colors">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-5 sm:p-7 lg:p-10 flex flex-col justify-end">
+        <h3 className="text-xl sm:text-2xl lg:text-[26px] xl:text-[28px] font-['Mona_Sans:Semi_Bold',sans-serif] font-semibold text-white leading-snug sm:leading-[36px] mb-3 sm:mb-4 group-hover:text-[#ffd43e] transition-colors">
           {project.title}
         </h3>
-        <div className="border-b border-white/20 pb-4 mb-4" />
+        <div className="border-b border-white/60 pb-3 sm:pb-4 mb-3 sm:mb-4" />
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 sm:gap-2.5">
             <span className="w-2 h-2 rounded-full bg-[#ffd43e] shrink-0" />
-            <span className="text-white text-base sm:text-[18px] font-['Mona_Sans:Medium',sans-serif]">
+            <span className="text-white text-sm sm:text-base lg:text-[18px] font-['Mona_Sans:Medium',sans-serif]">
               {project.category}
             </span>
           </div>

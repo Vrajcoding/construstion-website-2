@@ -16,8 +16,8 @@ export default function CartModal({
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between p-6 sm:p-8 animate-in slide-in-from-right duration-300">
+      <div className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-6">
+        <div className="w-full sm:w-[420px] max-w-full bg-white shadow-2xl flex flex-col justify-between p-6 sm:p-8 animate-in slide-in-from-right duration-300">
           <div>
             {/* Header */}
             <div className="flex items-center justify-between pb-6 border-b border-neutral-100">

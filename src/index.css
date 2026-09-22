@@ -1,31 +1,93 @@
 @import 'tailwindcss';
 
+
+@font-face {
+  font-family: "Mona Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Mona Sans Regular"), local("Mona Sans"), url("https://fonts.gstatic.com/s/monasans/v2/0FlvVP2n7W3tWVX4QC-U.woff2") format("woff2"), url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "Mona Sans";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Mona Sans Medium"), local("Mona Sans"), url("https://fonts.gstatic.com/s/monasans/v2/0FlvVP2n7W3tWVX4QC-U.woff2") format("woff2"), url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "Mona Sans";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Mona Sans SemiBold"), local("Mona Sans"), url("https://fonts.gstatic.com/s/monasans/v2/0FlvVP2n7W3tWVX4QC-U.woff2") format("woff2"), url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+}
+
+@font-face {
+  font-family: "Mona Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Mona Sans Bold"), local("Mona Sans"), url("https://fonts.gstatic.com/s/monasans/v2/0FlvVP2n7W3tWVX4QC-U.woff2") format("woff2"), url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+}
+
 @font-face {
   font-family: "Mona Sans:Medium";
   font-style: normal;
   font-weight: 500;
-  src: url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+  src: local("Mona Sans Medium"), local("Mona Sans"), url("https://fonts.gstatic.com/s/monasans/v2/0FlvVP2n7W3tWVX4QC-U.woff2") format("woff2"), url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
 }
 
 @font-face {
   font-family: "Mona Sans:Bold";
   font-style: normal;
   font-weight: 700;
-  src: url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+  src: local("Mona Sans Bold"), local("Mona Sans"), url("https://fonts.gstatic.com/s/monasans/v2/0FlvVP2n7W3tWVX4QC-U.woff2") format("woff2"), url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
 }
 
 @font-face {
   font-family: "Mona Sans:Regular";
   font-style: normal;
   font-weight: 400;
-  src: url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+  src: local("Mona Sans Regular"), local("Mona Sans"), url("https://fonts.gstatic.com/s/monasans/v2/0FlvVP2n7W3tWVX4QC-U.woff2") format("woff2"), url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
 }
 
 @font-face {
   font-family: "Mona Sans:Semi_Bold";
   font-style: normal;
   font-weight: 600;
-  src: url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+  src: local("Mona Sans SemiBold"), local("Mona Sans"), url("https://fonts.gstatic.com/s/monasans/v2/0FlvVP2n7W3tWVX4QC-U.woff2") format("woff2"), url("https://static.figma.com/font/MonaSans_wdth_wght__1") format("woff2");
+}
+
+:root {
+  /* Typography System based on Webflow Construcfy reference */
+  --font-primary: "Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Typography Scale Tokens */
+  --text-display-1: clamp(36px, 6vw, 82px); /* Hero display H1 */
+  --text-display-2: clamp(32px, 5vw, 62px); /* Section display H2 */
+  --text-display-3: clamp(26px, 4vw, 44px); /* CTA display H2 */
+  --text-display-4: clamp(20px, 3vw, 28px); /* Sidebar & Category card title */
+  --text-heading-h2: clamp(26px, 3.5vw, 38px); /* Featured article main title */
+  --text-heading-h3: clamp(20px, 2.5vw, 24px); /* Latest posts card title */
+  --text-body-large: 18px; /* Featured excerpts & category descriptions */
+  --text-body: 16px; /* Standard post excerpts & paragraph body */
+  --text-meta: 14px; /* Category tags, dates, metadata */
+  --text-button: 16px; /* Buttons and action links */
+  --text-small: 14px; /* Footer links, copyright */
+
+  /* Neutral palette tokens matching Webflow reference */
+  --neutral-800: #0e0e0e;
+  --neutral-700: #2f2f2f;
+  --neutral-600: #646464;
+  --neutral-500: #939393;
+  --neutral-400: #c5c5c5;
+  --neutral-300: #e7e7e7;
+  --neutral-200: #f4f4f4;
+  --neutral-100: #ffffff;
+  --accent-yellow: #ffd43e;
 }
 
 html {
@@ -35,11 +97,34 @@ html {
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+/* Enhanced typography word spacing */
+h1 {
+  word-spacing: 0.08em;
+}
+
+h2 {
+  word-spacing: 0.06em;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  word-spacing: 0.035em;
+}
+
+p {
+  word-spacing: 0.02em;
 }
 
 body,
 #root {
   min-height: 100%;
+  overflow-x: clip;
+  width: 100%;
 }
 
 ::selection {

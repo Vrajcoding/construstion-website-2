@@ -1,5 +1,8 @@
 import React from "react"
 import { blogCategoriesData } from "../../../data/siteData"
+import svgRemodeling from "../../../../imports/Remodeling-Artical.svg"
+import svgDesign from "../../../../imports/Design-artical.svg"
+import svgConstruction from "../../../../imports/construction-artical.svg"
 
 export interface BlogCategoriesSectionProps {
   onCategoryClick?: (category: string) => void
@@ -8,129 +11,65 @@ export interface BlogCategoriesSectionProps {
 export default function BlogCategoriesSection({
   onCategoryClick,
 }: BlogCategoriesSectionProps) {
-  const renderCategoryIcon = (type: string) => {
-    switch (type) {
-      case "remodeling":
-        // Circular arrows with triangle (Remodeling)
-        return (
-          <div className="w-14 h-14 text-[#0e0e0e]">
-            <svg
-              viewBox="0 0 48 48"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-full h-full"
-            >
-              {/* Counter-clockwise arc with triangle */}
-              <path d="M12 24C12 17.3726 17.3726 12 24 12C28.2 12 31.8 14.2 33.8 17.5" />
-              <path d="M12 17L12 24L19 24" />
-              {/* Clockwise bottom arc */}
-              <path d="M36 24C36 30.6274 30.6274 36 24 36C19.8 36 16.2 33.8 14.2 30.5" />
-              <path d="M36 31L36 24L29 24" />
-              {/* Inner Triangle */}
-              <polygon
-                points="24,18 30,28 18,28"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-            </svg>
-          </div>
-        )
-
-      case "design":
-        // 3 Overlapping Venn Diagram Circles (Design)
-        return (
-          <div className="w-14 h-14 text-[#0e0e0e]">
-            <svg
-              viewBox="0 0 48 48"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-full h-full"
-            >
-              <circle cx="24" cy="18" r="10" />
-              <circle cx="17" cy="29" r="10" />
-              <circle cx="31" cy="29" r="10" />
-            </svg>
-          </div>
-        )
-
-      case "construction":
-        // Builder Hammer / Mallet Icon (Construction)
-        return (
-          <div className="w-14 h-14 text-[#0e0e0e]">
-            <svg
-              viewBox="0 0 48 48"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-full h-full"
-            >
-              {/* Angled hammer head */}
-              <path d="M16 14L22 8L34 20L28 26Z" />
-              {/* Handle */}
-              <line x1="25" y1="23" x2="38" y2="36" />
-              <line x1="28" y1="26" x2="41" y2="39" />
-              <path d="M38 36L41 39" />
-            </svg>
-          </div>
-        )
-
-      default:
-        return null
-    }
+  const categoryIcons: Record<string, string> = {
+    remodeling: svgRemodeling,
+    design: svgDesign,
+    construction: svgConstruction,
   }
 
   return (
-    <section className="bg-white py-20 sm:py-28 lg:py-[160px]">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-[93px] sm:py-20 lg:py-[160px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title Header with full-width underline */}
-        <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight pb-10 sm:pb-14 border-b border-[#e7e7e7]">
+        <h2 className="text-[32px] sm:text-4xl md:text-5xl lg:text-[62px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight pb-8 sm:pb-12 border-b border-[#e7e7e7]">
           Articles by category
         </h2>
 
         {/* 3-Column Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-14 mt-12 sm:mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 mt-10 sm:mt-14">
           {blogCategoriesData.map((category) => (
             <div
               key={category.id}
-              className="group flex flex-col justify-between"
+              onClick={() => onCategoryClick?.(category.id)}
+              className="group cursor-pointer flex flex-col justify-between"
             >
               <div>
                 {/* SVG Icon with Subtle Hover Lift */}
-                <div className="mb-6 transform group-hover:-translate-y-1 transition-transform duration-300">
-                  {renderCategoryIcon(category.iconType)}
+                <div className="mb-5 transform group-hover:-translate-y-1 transition-transform duration-300">
+                  <img
+                    src={categoryIcons[category.iconType] || svgRemodeling}
+                    alt={category.title}
+                    className="w-[54px] h-[54px] sm:w-14 sm:h-14 object-contain"
+                  />
                 </div>
 
                 {/* Category Title */}
-                <h3 className="text-2xl sm:text-[28px] font-['Mona_Sans:Medium',sans-serif] font-bold text-[#0e0e0e] mb-3">
+                <h3 className="text-[20px] sm:text-2xl lg:text-[28px] font-['Mona_Sans:Semi_Bold',sans-serif] font-semibold text-[#0e0e0e] group-hover:text-[#ffd43e] transition-colors duration-200 mb-2 sm:mb-3">
                   {category.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[#646464] text-[16px] sm:text-[17px] font-['Mona_Sans:Regular',sans-serif] leading-[28px] sm:leading-[30px] mb-8">
+                <p className="text-[#646464] text-[16px] sm:text-base lg:text-[18px] lg:leading-[30px] font-['Mona_Sans:Regular',sans-serif] font-normal leading-[24px] sm:leading-[28px] mb-6 sm:mb-8 line-clamp-2">
                   {category.description}
                 </p>
               </div>
 
-              {/* Browse Articles Action Button / Link */}
-              <div>
-                <button
-                  onClick={() => onCategoryClick?.(category.id)}
-                  className="inline-flex items-center gap-2 text-[14px] sm:text-[15px] font-['Mona_Sans:Bold',sans-serif] font-bold tracking-[1.2px] uppercase text-[#0e0e0e] hover:text-neutral-700 transition-colors cursor-pointer group-hover:underline"
-                >
+              {/* Horizontal Divider Line centered between paragraph and button */}
+              <div className="pt-5 sm:pt-6 border-t border-[#e7e7e7]">
+                <span className="inline-flex items-center gap-2 text-[14px] sm:text-[15px] lg:text-[16px] font-['Mona_Sans:Semi_Bold',sans-serif] font-semibold tracking-[1.2px] uppercase text-[#0e0e0e] transition-colors">
                   <span>BROWSE ARTICLES</span>
-                  <span className="text-base group-hover:translate-x-1 transition-transform duration-200">
-                    →
-                  </span>
-                </button>
+                  <svg
+                    className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300 ease-out shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
               </div>
             </div>
           ))}

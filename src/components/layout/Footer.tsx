@@ -1,5 +1,6 @@
 import React from "react"
 import SocialIcons from "../common/SocialIcons"
+import Button from "../common/Button"
 
 export interface FooterProps {
   onOpenQuote?: () => void
@@ -10,7 +11,7 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
   const handleFooterLink = (
     e: React.MouseEvent<HTMLAnchorElement>,
     label: string,
-    href: string
+    href: string,
   ) => {
     const lower = label.toLowerCase()
     if (lower.includes("about") || lower.includes("team")) {
@@ -88,9 +89,9 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
         <div className="bg-white border border-white" />
       </div>
 
-      <div className="max-w-[1268px] mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top CTA Banner Row */}
-        <div className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-20 lg:pb-24 flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 sm:gap-10">
+        <div className="py-14 sm:py-18 lg:py-24 flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 sm:gap-10">
           <div className="max-w-[560px]">
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-['Mona_Sans:Medium',sans-serif] font-medium text-white leading-[1.18] sm:leading-[52px] tracking-tight">
               Ready to pull the trigger? <br />
@@ -98,26 +99,33 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
             </h2>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 sm:gap-5">
-            <button
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto">
+            <Button
+              variant="white"
+              size="lg"
+              showArrow
+              fullWidthMobile
               onClick={onOpenQuote}
-              className="bg-white text-[#0e0e0e] font-['Mona_Sans:Bold',sans-serif] font-bold text-base sm:text-[18px] px-8 sm:px-10 py-4.5 sm:py-5.5 rounded-[96px] inline-flex items-center gap-2 hover:bg-neutral-200 transition-all cursor-pointer whitespace-nowrap shadow-sm"
             >
-              <span>Get a quote</span>
-              <span className="text-lg leading-none">→</span>
-            </button>
+              Get a quote
+            </Button>
 
-            <button
-              onClick={onOpenQuote}
-              className="bg-transparent border border-white/40 hover:border-white text-white font-['Mona_Sans:Regular',sans-serif] font-normal text-base sm:text-[18px] px-8 sm:px-10 py-4.5 sm:py-5.5 rounded-[96px] inline-flex items-center justify-center hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap"
+            <Button
+              variant="outline-white"
+              size="lg"
+              fullWidthMobile
+              onClick={() => {
+                onNavigate?.("contact")
+                window.scrollTo({ top: 0, behavior: "smooth" })
+              }}
             >
               Contact us
-            </button>
+            </Button>
           </div>
         </div>
 
         {/* Main Footer Content with Top Border and Vertical Border */}
-        <div className="border-t border-[#2f2f2f] flex flex-col lg:flex-row">
+        <div className="border-t border-[#2f2f2f] flex flex-col lg:flex-row py-16 sm:py-20 lg:py-28">
           {/* Left Column: Brand & Socials */}
           <div className="w-full lg:w-[340px] shrink-0 pr-0 lg:pr-10 py-12 lg:py-20 lg:border-r border-[#2f2f2f] flex flex-col justify-start">
             {/* Logo */}
@@ -134,9 +142,21 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
                 >
                   <rect x="0" y="0.89" width="14" height="14" fill="#FFD43E" />
                   <rect x="28" y="0.89" width="14" height="14" fill="#FFD43E" />
-                  <rect x="14" y="14.89" width="14" height="14" fill="#FFD43E" />
+                  <rect
+                    x="14"
+                    y="14.89"
+                    width="14"
+                    height="14"
+                    fill="#FFD43E"
+                  />
                   <rect x="0" y="28.89" width="14" height="14" fill="#FFD43E" />
-                  <rect x="28" y="28.89" width="14" height="14" fill="#FFD43E" />
+                  <rect
+                    x="28"
+                    y="28.89"
+                    width="14"
+                    height="14"
+                    fill="#FFD43E"
+                  />
                 </svg>
               </div>
               <span className="font-['Mona_Sans:Bold',sans-serif] font-bold text-2xl text-white tracking-tight">
@@ -144,8 +164,8 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
               </span>
             </a>
 
-            {/* Description */}
-            <p className="text-[#c5c5c5] text-base sm:text-[18px] font-['Mona_Sans:Medium',sans-serif] font-medium leading-[28px] sm:leading-[30px] mb-6 max-w-[280px]">
+            {/* Description (Regular 400, muted, comfortable leading) */}
+            <p className="text-[#c5c5c5] text-[15px] sm:text-[16px] font-['Mona_Sans:Regular',sans-serif] font-normal leading-[26px] sm:leading-[28px] mb-6 max-w-[280px]">
               Lorem ipsum dolor sit amet consectetur non senectus velit.
             </p>
 
@@ -157,7 +177,7 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
           <div className="flex-1 pl-0 lg:pl-12 py-12 lg:py-20 grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12">
             {/* MAIN PAGES (Span 8 or 9 cols) */}
             <div className="md:col-span-8 lg:col-span-9">
-              <h3 className="text-white text-[18px] sm:text-[20px] font-['Mona_Sans:Medium',sans-serif] font-medium tracking-[1.2px] uppercase mb-7">
+              <h3 className="text-white text-[16px] sm:text-[18px] font-['Mona_Sans:Medium',sans-serif] font-medium tracking-[1.2px] uppercase mb-7">
                 MAIN PAGES
               </h3>
 
@@ -168,8 +188,10 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
                     <a
                       key={item.label}
                       href={item.href}
-                      onClick={(e) => handleFooterLink(e, item.label, item.href)}
-                      className="block text-[#c5c5c5] hover:text-white text-[14px] sm:text-[15px] font-['Mona_Sans:Medium',sans-serif] font-medium tracking-[0.96px] uppercase leading-[18px] transition-colors cursor-pointer"
+                      onClick={(e) =>
+                        handleFooterLink(e, item.label, item.href)
+                      }
+                      className="block text-[#c5c5c5] hover:text-white text-[14px] sm:text-[15px] font-['Mona_Sans:Regular',sans-serif] font-normal tracking-[0.8px] uppercase leading-[18px] transition-colors cursor-pointer"
                     >
                       {item.label}
                     </a>
@@ -182,8 +204,10 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
                     <a
                       key={item.label}
                       href={item.href}
-                      onClick={(e) => handleFooterLink(e, item.label, item.href)}
-                      className="block text-[#c5c5c5] hover:text-white text-[14px] sm:text-[15px] font-['Mona_Sans:Medium',sans-serif] font-medium tracking-[0.96px] uppercase leading-[18px] transition-colors cursor-pointer"
+                      onClick={(e) =>
+                        handleFooterLink(e, item.label, item.href)
+                      }
+                      className="block text-[#c5c5c5] hover:text-white text-[14px] sm:text-[15px] font-['Mona_Sans:Regular',sans-serif] font-normal tracking-[0.8px] uppercase leading-[18px] transition-colors cursor-pointer"
                     >
                       {item.label}
                     </a>
@@ -196,8 +220,10 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
                     <a
                       key={item.label}
                       href={item.href}
-                      onClick={(e) => handleFooterLink(e, item.label, item.href)}
-                      className="block text-[#c5c5c5] hover:text-white text-[14px] sm:text-[15px] font-['Mona_Sans:Medium',sans-serif] font-medium tracking-[0.96px] uppercase leading-[18px] transition-colors cursor-pointer"
+                      onClick={(e) =>
+                        handleFooterLink(e, item.label, item.href)
+                      }
+                      className="block text-[#c5c5c5] hover:text-white text-[14px] sm:text-[15px] font-['Mona_Sans:Regular',sans-serif] font-normal tracking-[0.8px] uppercase leading-[18px] transition-colors cursor-pointer"
                     >
                       {item.label}
                     </a>
@@ -208,7 +234,7 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
 
             {/* UTILITY PAGES (Span 4 or 3 cols) */}
             <div className="md:col-span-4 lg:col-span-3">
-              <h3 className="text-white text-[18px] sm:text-[20px] font-['Mona_Sans:Medium',sans-serif] font-medium tracking-[1.2px] uppercase mb-7">
+              <h3 className="text-white text-[16px] sm:text-[18px] font-['Mona_Sans:Medium',sans-serif] font-medium tracking-[1.2px] uppercase mb-7">
                 UTILITY PAGES
               </h3>
 
@@ -217,7 +243,7 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="block text-[#c5c5c5] hover:text-white text-[14px] sm:text-[15px] font-['Mona_Sans:Medium',sans-serif] font-medium tracking-[0.96px] uppercase leading-[18px] transition-colors"
+                    className="block text-[#c5c5c5] hover:text-white text-[14px] sm:text-[15px] font-['Mona_Sans:Regular',sans-serif] font-normal tracking-[0.8px] uppercase leading-[18px] transition-colors"
                   >
                     {item.label}
                   </a>
@@ -226,8 +252,31 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
             </div>
           </div>
         </div>
+
+        {/* Footer Bottom Bar: Copyright & Credits */}
+        <div className="border-t border-[#2f2f2f] pt-8 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] sm:text-[14px] font-['Mona_Sans:Regular',sans-serif] font-normal text-[#939393]">
+          <div>
+            Copyright © Construcfy X | Designed by{" "}
+            <a
+              href="https://brixtemplates.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#ffd43e] hover:text-white transition-colors"
+            >
+              BRIX Templates
+            </a>{" "}
+            - Powered by{" "}
+            <a
+              href="https://webflow.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#ffd43e] hover:text-white transition-colors"
+            >
+              Webflow
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   )
 }
-
