@@ -65,7 +65,7 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
               delay: 0.3,
               ease: [0.25, 1, 0.5, 1],
             }}
-            className="text-base sm:text-lg text-[#2f2f2f] leading-relaxed sm:leading-[30px] font-['Mona_Sans:Medium',sans-serif] font-medium max-w-xl lg:max-w-[620px] mx-auto lg:mx-0 text-center lg:text-left"
+            className="text-base sm:text-lg text-[#2f2f2f] leading-relaxed sm:leading-[30px] font-['Mona_Sans:Medium',sans-serif] font-medium max-w-xl mx-auto lg:mx-0 text-center lg:text-left"
           >
             Lorem ipsum dolor sit amet consectetur sit id quis magna imperdiet
             neque magnis nam eu volutpat tellus est elit aliquam ut suscipit.
