@@ -133,7 +133,7 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
         res.end(robotsTxt)
       })
     },
-    generateBundle() {
+    generateBundle(this: any) {
       if (!robotsTxt) return
 
       this.emitFile({
