@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import StaircaseAnimation from "./StaircaseAnimation"
 
 export interface PageLoadCurtainProps {
@@ -9,6 +9,8 @@ export interface PageLoadCurtainProps {
 
 export default function PageLoadCurtain({
   onComplete,
+  duration,
+  delay,
 }: PageLoadCurtainProps) {
   const [isVisible, setIsVisible] = useState(true)
 
@@ -20,6 +22,8 @@ export default function PageLoadCurtain({
     <StaircaseAnimation
       isCurtain={true}
       useGrid={true}
+      duration={duration}
+      staggerDelay={delay}
       showReplay={false}
       onComplete={() => {
         setIsVisible(false)

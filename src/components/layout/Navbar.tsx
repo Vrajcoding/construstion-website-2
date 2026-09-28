@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import Logo from "../common/Logo"
 import Button from "../common/Button"
 import { navLeftItems, navRightItems, megaMenuData } from "../../data/siteData"
+import { MegaMenuLink } from "../../types"
 
 export interface NavbarProps {
   theme?: "yellow" | "white" | "dark"
@@ -33,10 +35,9 @@ export default function Navbar({
     ? "bg-[#0e0e0e] text-white border-none shadow-none"
     : isWhite
       ? "bg-white text-[#0e0e0e] border-none shadow-none"
-      : "bg-[#ffd43e] text-[#0e0e0e]"
+      : "bg-[#ffd43e] text-[#0e0e0e] border-none shadow-none"
 
   const navTextColor = isDark ? "text-white" : "text-[#0e0e0e]"
-  const activeUnderline = isDark ? "bg-[#ffd43e]" : "bg-[#0e0e0e]"
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -84,7 +85,7 @@ export default function Navbar({
 
   const handleMegaMenuClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    link: { label: string; href: string; route?: string; isQuote?: boolean },
+    link: MegaMenuLink,
   ) => {
     e.preventDefault()
     setPagesDropdownOpen(false)
@@ -102,9 +103,9 @@ export default function Navbar({
   }
 
   return (
-    <header className={`${headerBg} w-full relative z-40 transition-colors`}>
+    <header className={`${headerBg} w-full relative z-40 transition-colors border-none shadow-none`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-5 sm:py-6 lg:py-7 min-h-[84px] sm:min-h-[96px]">
+        <div className="flex items-center justify-between py-5 sm:py-6 lg:py-8 min-h-[84px] sm:min-h-[96px]">
           {/* Desktop Left Navigation Links */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8 2xl:gap-10">
             {navLeftItems.map((item) => {
@@ -115,16 +116,11 @@ export default function Navbar({
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleLinkClick(e, item.label, item.href)}
-                  className={`font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.96px] ${navTextColor} hover:opacity-75 transition-opacity uppercase relative py-1.5 ${
+                  className={`font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.96px] ${navTextColor} hover:opacity-75 transition-opacity uppercase relative py-1.5 border-none ${
                     isActive ? "font-bold" : ""
                   }`}
                 >
                   {item.label}
-                  {isActive && (
-                    <span
-                      className={`absolute bottom-0 left-0 right-0 h-[2px] ${activeUnderline}`}
-                    />
-                  )}
                 </a>
               )
             })}
@@ -187,9 +183,17 @@ export default function Navbar({
                       </svg>
                     </button>
 
-                    {/* Mega Menu Dropdown */}
-                    {pagesDropdownOpen && (
-                      <div className="absolute top-full right-0 mt-3 w-[820px] max-w-[calc(100vw-32px)] bg-white text-[#0e0e0e] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] p-6 sm:p-8 lg:p-10 z-50 animate-in fade-in slide-in-from-top-2 duration-150 rounded-none border border-black/5 cursor-default select-none">
+                    {/* Mega Menu Dropdown with Smooth Animation */}
+                    <AnimatePresence>
+                      {pagesDropdownOpen && (
+                        <motion.div
+                          key="desktop-mega-menu"
+                          initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                          className="absolute top-full right-0 mt-3 w-[820px] max-w-[calc(100vw-32px)] bg-white text-[#0e0e0e] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] p-6 sm:p-8 lg:p-10 z-50 rounded-none border-none cursor-default select-none"
+                        >
                         <div className="grid grid-cols-12 gap-8 lg:gap-12">
                           {/* MAIN PAGES (3 Columns - 9 cols) */}
                           <div className="col-span-12 lg:col-span-9">
@@ -270,8 +274,9 @@ export default function Navbar({
                             </div>
                           </div>
                         </div>
-                      </div>
-                    )}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 )
               }
@@ -281,16 +286,11 @@ export default function Navbar({
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleLinkClick(e, item.label, item.href)}
-                  className={`font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.96px] ${navTextColor} hover:opacity-75 transition-opacity uppercase relative py-1 ${
+                  className={`font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.96px] ${navTextColor} hover:opacity-75 transition-opacity uppercase relative py-1 border-none ${
                     isActive ? "font-bold" : ""
                   }`}
                 >
                   {item.label}
-                  {isActive && (
-                    <span
-                      className={`absolute bottom-0 left-0 right-0 h-[2px] ${activeUnderline}`}
-                    />
-                  )}
                 </a>
               )
             })}
@@ -306,189 +306,232 @@ export default function Navbar({
             </button>
           </nav>
 
-          {/* Mobile Menu & Cart Controls */}
-          <div className="flex items-center gap-4 lg:hidden">
-            <button
+          {/* Mobile Menu & Cart Controls - Clean Text & Animated 2-Line Hamburger */}
+          <div className="flex items-center gap-5 lg:hidden">
+            <motion.button
+              whileTap={{ scale: 0.94 }}
+              whileHover={{ opacity: 0.75 }}
               onClick={onOpenCart}
-              className={`flex items-center gap-1 text-sm font-semibold px-3 py-1.5 rounded-full ${
-                isDark ? "bg-white/10 text-white" : "bg-black/5 text-[#0e0e0e]"
-              }`}
+              className={`font-['Mona_Sans:Medium',sans-serif] font-medium text-[15px] sm:text-[16px] tracking-[0.96px] ${navTextColor} transition-opacity uppercase cursor-pointer select-none`}
+              aria-label="Open Shopping Cart"
             >
-              <span>CART</span>
-              <span>({cartCount})</span>
-            </button>
+              CART({cartCount})
+            </motion.button>
 
-            <button
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-lg transition-colors focus:outline-none cursor-pointer ${
-                isDark
-                  ? "text-white hover:bg-white/10"
-                  : "text-[#0e0e0e] hover:bg-black/5"
-              }`}
-              aria-label="Toggle Navigation Menu"
+              className={`p-2 transition-all duration-200 hover:opacity-80 focus:outline-none cursor-pointer ${navTextColor} flex items-center justify-center rounded-full`}
+              aria-label={mobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
             >
-              {mobileMenuOpen ? (
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              )}
-            </button>
+              <div className="w-6 h-5 relative flex items-center justify-center">
+                <motion.span
+                  animate={mobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -4.5 }}
+                  transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                  className={`w-5 h-[2px] ${isDark ? "bg-white" : "bg-[#0e0e0e]"} absolute rounded-full`}
+                  style={{ transformOrigin: "center" }}
+                />
+                <motion.span
+                  animate={mobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 4.5 }}
+                  transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                  className={`w-5 h-[2px] ${isDark ? "bg-white" : "bg-[#0e0e0e]"} absolute rounded-full`}
+                  style={{ transformOrigin: "center" }}
+                />
+              </div>
+            </motion.button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Navigation Drawer */}
+      {/* Dim Backdrop that smoothly fades in behind the dropdown in same window without intersecting header */}
+      <AnimatePresence>
         {mobileMenuOpen && (
-          <div
-            className={`lg:hidden py-4 border-t flex flex-col gap-3 animate-in fade-in duration-200 ${
-              isDark ? "border-white/10" : "border-black/10"
-            }`}
+          <motion.div
+            key="mobile-nav-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            onClick={() => setMobileMenuOpen(false)}
+            className="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-30 lg:hidden"
+            aria-hidden="true"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Navigation Dropdown - Ultra-smooth glide directly beneath navbar with zero borders */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            key="mobile-nav-dropdown"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute top-full left-0 right-0 z-40 bg-white text-[#0e0e0e] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)] border-none overflow-hidden lg:hidden"
           >
-            {navLeftItems.map((item) => (
+            <div className="px-6 py-6 pb-8 flex flex-col space-y-4 max-h-[calc(100dvh-100px)] overflow-y-auto">
               <a
-                key={item.label}
-                href={item.href}
+                href="#home"
                 onClick={(e) => {
                   setMobileMenuOpen(false)
-                  handleLinkClick(e, item.label, item.href)
+                  handleLinkClick(e, "HOME", "#home")
                 }}
-                className={`px-2 py-2 text-base font-semibold tracking-wider rounded-lg uppercase ${
-                  isDark
-                    ? "text-white hover:bg-white/10"
-                    : "text-[#0e0e0e] hover:bg-black/5"
-                }`}
+                className="font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.08em] text-[#0e0e0e] hover:text-[#ffd43e] uppercase transition-colors py-1.5 flex items-center justify-between border-none"
               >
-                {item.label}
+                <span>HOME</span>
+                {currentPage.toLowerCase() === "home" && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffd43e]" />
+                )}
               </a>
-            ))}
 
-            {/* Mobile Pages Accordion */}
-            <div className="border-t border-black/10 dark:border-white/10 pt-2">
-              <button
-                onClick={() =>
-                  setMobilePagesAccordionOpen(!mobilePagesAccordionOpen)
-                }
-                className={`w-full flex items-center justify-between px-2 py-2 text-base font-semibold tracking-wider rounded-lg uppercase ${
-                  isDark
-                    ? "text-white hover:bg-white/10"
-                    : "text-[#0e0e0e] hover:bg-black/5"
-                }`}
-              >
-                <span>PAGES</span>
-                <svg
-                  className={`w-4 h-4 transition-transform ${
-                    mobilePagesAccordionOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-
-              {mobilePagesAccordionOpen && (
-                <div className="pl-4 pr-2 py-2 flex flex-col gap-2 bg-black/5 dark:bg-white/5 rounded-lg mt-1">
-                  <span className="text-xs font-bold text-neutral-500 uppercase mt-1">
-                    MAIN PAGES
-                  </span>
-                  {[
-                    ...megaMenuData.mainPages.column1,
-                    ...megaMenuData.mainPages.column2,
-                    ...megaMenuData.mainPages.column3,
-                  ].map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      onClick={(e) => handleMegaMenuClick(e, link)}
-                      className="py-1 text-sm font-medium hover:text-[#ffd43e] uppercase"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-
-                  <span className="text-xs font-bold text-neutral-500 uppercase mt-3">
-                    UTILITY PAGES
-                  </span>
-                  {megaMenuData.utilityPages.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      onClick={(e) => handleMegaMenuClick(e, link)}
-                      className="py-1 text-sm font-medium hover:text-[#ffd43e] uppercase"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {navRightItems
-              .filter((item) => !item.hasDropdown)
-              .map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={(e) => {
-                    setMobileMenuOpen(false)
-                    handleLinkClick(e, item.label, item.href)
-                  }}
-                  className={`px-2 py-2 text-base font-semibold tracking-wider rounded-lg uppercase ${
-                    isDark
-                      ? "text-white hover:bg-white/10"
-                      : "text-[#0e0e0e] hover:bg-black/5"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              ))}
-
-            <div className="pt-2">
-              <Button
-                variant={isDark ? "yellow" : "primary"}
-                size="md"
-                showArrow
-                fullWidthMobile
-                onClick={() => {
+              <a
+                href="#about"
+                onClick={(e) => {
                   setMobileMenuOpen(false)
-                  onOpenQuote?.()
+                  handleLinkClick(e, "ABOUT", "#about")
                 }}
+                className="font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.08em] text-[#0e0e0e] hover:text-[#ffd43e] uppercase transition-colors py-1.5 flex items-center justify-between border-none"
               >
-                Get a quote
-              </Button>
+                <span>ABOUT</span>
+                {currentPage.toLowerCase() === "about" && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffd43e]" />
+                )}
+              </a>
+
+              <a
+                href="#blog"
+                onClick={(e) => {
+                  setMobileMenuOpen(false)
+                  handleLinkClick(e, "BLOG", "#blog")
+                }}
+                className="font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.08em] text-[#0e0e0e] hover:text-[#ffd43e] uppercase transition-colors py-1.5 flex items-center justify-between border-none"
+              >
+                <span>BLOG</span>
+                {currentPage.toLowerCase() === "blog" && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffd43e]" />
+                )}
+              </a>
+
+              {/* PAGES ∨ with Full Mega Menu Details on Mobile */}
+              <div>
+                <button
+                  onClick={() =>
+                    setMobilePagesAccordionOpen(!mobilePagesAccordionOpen)
+                  }
+                  className="w-full flex items-center justify-between font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.08em] text-[#0e0e0e] hover:text-[#ffd43e] uppercase transition-colors cursor-pointer text-left py-1.5 border-none"
+                >
+                  <span className="flex items-center gap-1.5">
+                    <span>PAGES</span>
+                    <svg
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                        mobilePagesAccordionOpen ? "rotate-180" : ""
+                      }`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2.4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {mobilePagesAccordionOpen && (
+                    <motion.div
+                      key="mobile-pages-dropdown"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mt-3 pt-2 pb-2 flex flex-col space-y-6">
+                        {/* MAIN PAGES (All 3 Columns matching Large Display) */}
+                        <div className="space-y-3">
+                          <div className="font-['Mona_Sans:Bold',sans-serif] font-bold text-[14px] sm:text-[15px] tracking-[1.2px] text-[#0e0e0e] uppercase">
+                            MAIN PAGES
+                          </div>
+                          <div className="grid grid-cols-2 gap-x-3 gap-y-2.5 pl-1">
+                            {[
+                              ...megaMenuData.mainPages.column1,
+                              ...megaMenuData.mainPages.column2,
+                              ...megaMenuData.mainPages.column3,
+                            ].map((link, idx) => (
+                              <a
+                                key={`${link.label}-${idx}`}
+                                href={link.href}
+                                onClick={(e) => handleMegaMenuClick(e, link)}
+                                className={`font-['Mona_Sans:Medium',sans-serif] text-[13px] tracking-[0.4px] text-[#555555] hover:text-[#0e0e0e] uppercase transition-colors py-0.5 border-none ${
+                                  link.isBold ? "font-bold text-[#0e0e0e]" : ""
+                                }`}
+                              >
+                                {link.label}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* UTILITY PAGES (Matching Large Display) */}
+                        <div className="space-y-3 pt-2">
+                          <div className="font-['Mona_Sans:Bold',sans-serif] font-bold text-[14px] sm:text-[15px] tracking-[1.2px] text-[#0e0e0e] uppercase">
+                            UTILITY PAGES
+                          </div>
+                          <div className="grid grid-cols-2 gap-x-3 gap-y-2.5 pl-1">
+                            {megaMenuData.utilityPages.map((link) => (
+                              <a
+                                key={link.label}
+                                href={link.href}
+                                onClick={(e) => handleMegaMenuClick(e, link)}
+                                className="font-['Mona_Sans:Medium',sans-serif] text-[13px] tracking-[0.4px] text-[#555555] hover:text-[#0e0e0e] uppercase transition-colors py-0.5 border-none"
+                              >
+                                {link.label}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <a
+                href="#services"
+                onClick={(e) => {
+                  setMobileMenuOpen(false)
+                  handleLinkClick(e, "SERVICES", "#services")
+                }}
+                className="font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.08em] text-[#0e0e0e] hover:text-[#ffd43e] uppercase transition-colors py-1.5 flex items-center justify-between border-none"
+              >
+                <span>SERVICES</span>
+                {currentPage.toLowerCase() === "services" && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffd43e]" />
+                )}
+              </a>
+
+              <a
+                href="#work"
+                onClick={(e) => {
+                  setMobileMenuOpen(false)
+                  handleLinkClick(e, "WORK", "#work")
+                }}
+                className="font-['Mona_Sans:Medium',sans-serif] font-medium text-[16px] tracking-[0.08em] text-[#0e0e0e] hover:text-[#ffd43e] uppercase transition-colors py-1.5 flex items-center justify-between border-none"
+              >
+                <span>WORK</span>
+                {currentPage.toLowerCase() === "work" && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffd43e]" />
+                )}
+              </a>
             </div>
-          </div>
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
     </header>
   )
 }

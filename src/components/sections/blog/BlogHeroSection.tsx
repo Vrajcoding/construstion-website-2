@@ -25,14 +25,16 @@ export default function BlogHeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
           {/* Left Column: Image on top, Content on bottom */}
           <div className="group cursor-pointer flex flex-col justify-between pb-0 lg:pb-0 lg:pr-8 xl:pr-12">
-            {/* Featured Image */}
-            <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/10] overflow-hidden bg-neutral-900 shadow-xl">
+            {/* Featured Image with signature Construcfy card hover tilt & dark shadow */}
+            <div className="card-image-wrap relative w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/10] bg-[#0e0e0e] shadow-xl">
               <img
                 src={siteImages.blog1}
                 alt="Modern living room with minimalist couch and coffee table"
-                className="w-full h-full object-cover grayscale contrast-105 group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover grayscale contrast-105"
               />
+              <div className="card-image-shadow" />
             </div>
+
 
             {/* Bottom Content Under Image with Bottom Border */}
             <div className="pt-6 sm:pt-8 pb-8 sm:pb-12 border-b border-[#c5c5c5]/40 flex flex-col flex-1 justify-center">

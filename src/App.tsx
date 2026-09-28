@@ -8,7 +8,7 @@ import {
   WorkPage,
   ContactPage,
 } from "./components/pages"
-import { QuoteModal, CartModal, VideoModal } from "./components/modals"
+import { CartModal, VideoModal, QuoteModal } from "./components/modals"
 import { StaircaseAnimation } from "./components/common"
 import { useNavigation, useModals } from "./hooks"
 
@@ -111,6 +111,10 @@ export default function App() {
         isOpen={isCartOpen}
         onClose={closeCart}
         onOpenQuote={() => openQuote()}
+        onGoToShop={() => {
+          navigate("services")
+          window.scrollTo({ top: 0, behavior: "smooth" })
+        }}
       />
 
       <VideoModal isOpen={isVideoOpen} onClose={closeVideo} />

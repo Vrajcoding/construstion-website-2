@@ -47,20 +47,20 @@ export default function AboutPage({ onOpenQuote, onNavigate }: AboutPageProps) {
       {/* 3. Interactive Values with Sticky Left Sidebar & 6 Lineart Value Cards */}
       <AboutValuesSection onContactClick={handleContactClick} />
 
-      {/* 4. Visit Our Offices Around the Globe (Dark Background & Location Cards) */}
-      <AboutOfficesSection />
-
-      {/* 5. The Amazing Team Behind Construcfy (Profile Cards & Socials) */}
-      <AboutTeamSection onOpenQuote={onOpenQuote} />
-
-      {/* 6. Frequently Asked Questions (Interactive Accordion) */}
-      <AboutFaqSection />
-
-      {/* 7. Narrative Story Section ("About Us - Reliable and Experienced Contractors") */}
+      {/* 4. Narrative Story Section ("Our Story & Our Mission") */}
       <AboutStorySection
         onOpenQuote={onOpenQuote}
         onLearnMore={handleLearnMore}
       />
+
+      {/* 5. Visit Our Offices Around the Globe (Dark Background & Location Cards) */}
+      <AboutOfficesSection />
+
+      {/* 6. The Amazing Team Behind Construcfy (Profile Cards & Socials) */}
+      <AboutTeamSection onOpenQuote={onOpenQuote} />
+
+      {/* 7. Frequently Asked Questions (Interactive Accordion) */}
+      <AboutFaqSection />
 
       {/* 8. Follow Our Work on Instagram (1 Large Left + 4 Equal Height 2x2 Grid) */}
       <AboutInstagramSection />

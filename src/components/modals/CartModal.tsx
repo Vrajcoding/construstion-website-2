@@ -1,105 +1,123 @@
-import React from "react"
-import Button from "../common/Button"
+import React, { useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 export interface CartModalProps {
   isOpen: boolean
   onClose: () => void
   onOpenQuote?: () => void
+  onGoToShop?: () => void
 }
 
 export default function CartModal({
   isOpen,
   onClose,
-  onOpenQuote,
+  onGoToShop,
 }: CartModalProps) {
-  if (!isOpen) return null
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-6">
-        <div className="w-full sm:w-[420px] max-w-full bg-white shadow-2xl flex flex-col justify-between p-6 sm:p-8 animate-in slide-in-from-right duration-300">
-          <div>
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          key="cart-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm"
+          onClick={onClose}
+        >
+          {/* Dialog Box with smooth spring-like scale & slide */}
+          <motion.div
+            key="cart-dialog"
+            initial={{ opacity: 0, scale: 0.94, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 12 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-[460px] sm:max-w-[480px] bg-white shadow-2xl rounded-none flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Header */}
-            <div className="flex items-center justify-between pb-6 border-b border-neutral-100">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#ffd43e]" />
-                <h3 className="font-['Mona_Sans:Bold',sans-serif] font-bold text-xl uppercase tracking-wider text-[#0e0e0e]">
-                  Your Cart
-                </h3>
-              </div>
-              <button
+            <div className="flex items-center justify-between px-6 sm:px-8 py-5 sm:py-6 border-b border-[#e7e7e7]">
+              <h3 className="font-['Mona_Sans:Bold',sans-serif] font-bold text-xl sm:text-2xl text-[#0e0e0e] tracking-tight">
+                Your Cart
+              </h3>
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0.2 }}
                 onClick={onClose}
-                className="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-neutral-600 transition-colors"
+                className="p-1.5 text-[#0e0e0e] hover:opacity-60 transition-opacity cursor-pointer"
                 aria-label="Close Cart"
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-5 h-5 sm:w-6 sm:h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  strokeWidth="1.8"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth="2"
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
-              </button>
+              </motion.button>
             </div>
 
-            {/* Empty State */}
-            <div className="py-20 text-center space-y-4">
-              <div className="w-16 h-16 bg-neutral-100 rounded-full flex items-center justify-center mx-auto text-neutral-400">
+            {/* Center Content */}
+            <div className="px-6 sm:px-8 py-16 sm:py-20 flex flex-col items-center justify-center text-center space-y-6 sm:space-y-7">
+              <motion.p
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.08, duration: 0.3 }}
+                className="text-base sm:text-lg font-medium text-[#0e0e0e] font-['Mona_Sans:Medium',sans-serif]"
+              >
+                No items found.
+              </motion.p>
+
+              <motion.button
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.14, duration: 0.3 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => {
+                  onClose()
+                  if (onGoToShop) {
+                    onGoToShop()
+                  }
+                }}
+                className="group inline-flex items-center justify-center gap-2.5 bg-[#0e0e0e] hover:bg-[#222222] text-white font-['Mona_Sans:Bold',sans-serif] font-bold text-sm sm:text-base px-8 sm:px-9 py-3.5 sm:py-4 rounded-full transition-all cursor-pointer shadow-md hover:shadow-lg"
+              >
+                <span>Go to shop</span>
                 <svg
-                  className="w-8 h-8"
+                  className="w-4 h-4 sm:w-[18px] sm:h-[18px] transition-transform duration-200 group-hover:translate-x-1.5 shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.5"
-                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                  />
+                  <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
-              </div>
-              <h4 className="text-lg font-semibold text-[#0e0e0e]">
-                Your cart is currently empty
-              </h4>
-              <p className="text-sm text-neutral-500 max-w-xs mx-auto">
-                Looking for contracting packages or consultations? Request a
-                personalized quote today.
-              </p>
+              </motion.button>
             </div>
-          </div>
-
-          {/* Footer Actions */}
-          <div className="space-y-3 pt-6 border-t border-neutral-100">
-            <Button
-              variant="primary"
-              size="lg"
-              showArrow
-              className="w-full"
-              onClick={() => {
-                onClose()
-                onOpenQuote?.()
-              }}
-            >
-              Request a Quote
-            </Button>
-            <Button
-              variant="outline"
-              size="md"
-              className="w-full"
-              onClick={onClose}
-            >
-              Continue Browsing
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }

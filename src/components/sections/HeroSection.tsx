@@ -10,15 +10,15 @@ export interface HeroSectionProps {
 
 export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
   return (
-    <section id="home" className="relative bg-[#ffd43e] overflow-hidden">
-      {/* Desktop contractor image: full-bleed right half from top to bottom */}
+    <section id="home" className="relative bg-[#ffd43e] overflow-hidden lg:overflow-visible">
+      {/* Desktop contractor image: full-bleed right half, extending outside the section into stats */}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 1, 0.5, 1] }}
-        className="hidden lg:block absolute inset-y-0 right-0 left-[50%] xl:left-[52%] 2xl:left-[54%] z-0 pointer-events-none"
+        className="hidden lg:block absolute top-0 right-0 left-[50%] xl:left-[52%] 2xl:left-[54%] lg:-bottom-20 xl:-bottom-28 2xl:-bottom-32 z-20 pointer-events-none"
       >
-        <div className="relative w-full h-full overflow-hidden bg-neutral-900 rounded-none">
+        <div className="relative w-full h-full overflow-hidden bg-neutral-900 rounded-none shadow-2xl">
           <motion.img
             initial={{ scale: 1.05 }}
             animate={{ scale: 1 }}
@@ -37,8 +37,8 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
       </motion.div>
 
       {/* Foreground Content Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-10 sm:pt-14 pb-8 sm:pb-10 lg:py-24 xl:py-32 lg:min-h-[640px] xl:min-h-[720px] flex flex-col justify-center">
-        <div className="w-full lg:w-[48%] xl:w-[46%] space-y-6 sm:space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30 w-full pt-10 sm:pt-14 pb-8 sm:pb-10 lg:py-24 xl:py-32 lg:min-h-[640px] xl:min-h-[720px] flex flex-col justify-center">
+        <div className="w-full lg:w-[72%] xl:w-[68%] 2xl:w-[65%] space-y-6 sm:space-y-8 relative z-30">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -47,10 +47,14 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
               delay: 0.2,
               ease: [0.25, 1, 0.5, 1],
             }}
-            className="text-4xl lg:text-7xl xl:text-[80px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight leading-[1.1] select-none text-center lg:text-left"
+            className="text-4xl lg:text-[64px] xl:text-[76px] 2xl:text-[82px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight leading-[1.08] select-none text-center lg:text-left"
           >
-            We provide effective <br className="hidden sm:inline" />
-            contracting services
+            <span className="block whitespace-normal lg:whitespace-nowrap">
+              We provide effective
+            </span>
+            <span className="block whitespace-normal lg:whitespace-nowrap">
+              contracting services
+            </span>
           </motion.h1>
 
           <motion.p
@@ -61,7 +65,7 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
               delay: 0.3,
               ease: [0.25, 1, 0.5, 1],
             }}
-            className="text-base sm:text-lg text-[#2f2f2f] leading-relaxed sm:leading-[30px] font-['Mona_Sans:Medium',sans-serif] font-medium max-w-xl"
+            className="text-base sm:text-lg text-[#2f2f2f] leading-relaxed sm:leading-[30px] font-['Mona_Sans:Medium',sans-serif] font-medium max-w-xl mx-auto lg:mx-0 text-center lg:text-left"
           >
             Lorem ipsum dolor sit amet consectetur sit id quis magna imperdiet
             neque magnis nam eu volutpat tellus est elit aliquam ut suscipit.
@@ -75,7 +79,7 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
               delay: 0.4,
               ease: [0.25, 1, 0.5, 1],
             }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3.5 pt-1"
           >
             <Button
               variant="primary"

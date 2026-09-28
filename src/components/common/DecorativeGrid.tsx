@@ -20,6 +20,7 @@ export interface DecorativeGridProps {
     | "cta-top-right"
     | "cta-bottom-right"
     | "staircase-br"
+    | "triplet-bottom-left"
   className?: string
   fillColor?: "white" | "yellow" | "dark"
 }
@@ -148,7 +149,8 @@ export default function DecorativeGrid({
     pattern === "corner-triplet" ||
     pattern === "triplet-top-right" ||
     pattern === "staircase" ||
-    pattern === "diagonal-tl-br"
+    pattern === "diagonal-tl-br" ||
+    pattern === "triplet-bottom-left"
 
   const isCell2Filled =
     pattern === "hero-checker" ||
@@ -163,14 +165,16 @@ export default function DecorativeGrid({
     pattern === "hero-checker" ||
     pattern === "dual-diagonal" ||
     pattern === "staircase-br" ||
-    pattern === "corner-triplet"
+    pattern === "corner-triplet" ||
+    pattern === "triplet-bottom-left"
 
   const isCell4Filled =
     pattern === "bottom-right" ||
     pattern === "yellow-corner" ||
     pattern === "triplet-top-right" ||
     pattern === "staircase-br" ||
-    pattern === "diagonal-tl-br"
+    pattern === "diagonal-tl-br" ||
+    pattern === "triplet-bottom-left"
 
   // Bottom row cells animate first (0.08s delay), Top row cells animate second (0.24s delay)
   const cells = [

@@ -1,8 +1,10 @@
 import React from "react"
+import { motion } from "framer-motion"
 import SectionTag from "../../common/SectionTag"
 import Button from "../../common/Button"
 import DecorativeGrid from "../../common/DecorativeGrid"
 import { valuesData } from "../../../data/siteData"
+
 
 export interface AboutValuesSectionProps {
   onContactClick?: () => void
@@ -17,7 +19,7 @@ export default function AboutValuesSection({
       case "quality":
         // Trophy Cup Icon
         return (
-          <div className="h-12 w-12 sm:h-14 sm:w-14 text-[#0e0e0e]">
+          <div className="w-full h-full text-[#0e0e0e]">
             <svg
               viewBox="0 0 48 48"
               fill="none"
@@ -39,7 +41,7 @@ export default function AboutValuesSection({
       case "commitment":
         // Shield with Checkmark Icon
         return (
-          <div className="h-12 w-12 sm:h-14 sm:w-14 text-[#0e0e0e]">
+          <div className="w-full h-full text-[#0e0e0e]">
             <svg
               viewBox="0 0 48 48"
               fill="none"
@@ -58,7 +60,7 @@ export default function AboutValuesSection({
       case "innovation":
         // Gear / Cog Mechanism Icon
         return (
-          <div className="h-12 w-12 sm:h-14 sm:w-14 text-[#0e0e0e]">
+          <div className="w-full h-full text-[#0e0e0e]">
             <svg
               viewBox="0 0 48 48"
               fill="none"
@@ -77,7 +79,7 @@ export default function AboutValuesSection({
       case "openness":
         // Globe Wireframe Icon
         return (
-          <div className="h-12 w-12 sm:h-14 sm:w-14 text-[#0e0e0e]">
+          <div className="w-full h-full text-[#0e0e0e]">
             <svg
               viewBox="0 0 48 48"
               fill="none"
@@ -100,7 +102,7 @@ export default function AboutValuesSection({
       case "growth":
         // 3 Ascending Bar Chart Columns Icon
         return (
-          <div className="h-12 w-12 sm:h-14 sm:w-14 text-[#0e0e0e]">
+          <div className="w-full h-full text-[#0e0e0e]">
             <svg
               viewBox="0 0 48 48"
               fill="none"
@@ -120,7 +122,7 @@ export default function AboutValuesSection({
       case "leadership":
         // Waving Flag on Pole Icon
         return (
-          <div className="h-12 w-12 sm:h-14 sm:w-14 text-[#0e0e0e]">
+          <div className="w-full h-full text-[#0e0e0e]">
             <svg
               viewBox="0 0 48 48"
               fill="none"
@@ -142,7 +144,7 @@ export default function AboutValuesSection({
   }
 
   return (
-    <section className="bg-[#f8f8f8] py-14 sm:py-20 lg:py-28 relative overflow-hidden">
+    <section className="bg-[#f8f8f8] py-[120px] sm:py-20 lg:py-56 relative overflow-visible">
       {/* Top-Right Stepped Decorative Grid Pattern (Predefined Component) */}
       <div className="absolute top-0 right-0 z-0 pointer-events-none">
         <DecorativeGrid pattern="hero-checker" fillColor="white" />
@@ -156,17 +158,17 @@ export default function AboutValuesSection({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Column: Pinned / Sticky Centered Values Information */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28 self-start space-y-4 sm:space-y-6 pt-2">
+          <div className="lg:col-span-5 lg:sticky lg:top-32 self-start space-y-4 sm:space-y-6 pt-2">
             {/* Tag (Predefined Component) */}
             <SectionTag text="VALUES" theme="dark" />
 
-            {/* Title */}
-            <h2 className="text-3xl sm:text-5xl lg:text-[54px] xl:text-[62px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight leading-[1.08] sm:leading-[1.12]">
+            {/* Title (62px on large display) */}
+            <h2 className="text-3xl sm:text-5xl lg:text-[62px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] tracking-tight leading-[1.08] sm:leading-[1.12]">
               Our values
             </h2>
 
             {/* Description */}
-            <p className="text-[#646464] text-base sm:text-lg font-['Mona_Sans:Regular',sans-serif] leading-relaxed sm:leading-[30px] max-w-md pt-1">
+            <p className="text-[#646464] text-base sm:text-lg lg:text-[18px] font-['Mona_Sans:Regular',sans-serif] leading-relaxed sm:leading-[30px] max-w-md pt-1">
               Lorem ipsum dolor sit amet consectetur non sit elementum sem
               libero a tellus id pretium nisi posuere consectetur eu.
             </p>
@@ -177,6 +179,7 @@ export default function AboutValuesSection({
                 variant="outline"
                 size="md"
                 fullWidthMobile
+                className="text-[16px] lg:text-[18px]"
                 onClick={onContactClick}
               >
                 Contact us
@@ -187,23 +190,31 @@ export default function AboutValuesSection({
           {/* Right Column: 2-Column Responsive / Scrolling Values Cards Grid */}
           <div className="lg:col-span-7">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 sm:gap-x-12 gap-y-12 sm:gap-y-16">
-              {valuesData.map((item) => (
-                <div
+              {valuesData.map((item, index) => (
+                <motion.div
                   key={item.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{
+                    duration: 0.55,
+                    delay: (index % 2) * 0.12,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
                   className="group flex flex-col justify-between transition-all duration-300"
                 >
                   <div>
-                    {/* Icon with Subtle Hover Lift */}
-                    <div className="mb-6 transform group-hover:-translate-y-1.5 transition-transform duration-300">
+                    {/* Icon (54x54 on mobile, 64x64 on large display) with Subtle Hover Lift */}
+                    <div className="mb-6 transform group-hover:-translate-y-1.5 transition-transform duration-300 w-[54px] h-[54px] sm:w-14 sm:h-14 lg:w-[64px] lg:h-[64px] text-[#0e0e0e]">
                       {renderValueIcon(item.iconType)}
                     </div>
 
-                    {/* Title */}
-                    <h3 className="text-2xl sm:text-[26px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] mb-3 leading-[32px]">
+                    {/* Title (20px on mobile, sm:text-[26px]) */}
+                    <h3 className="text-[20px] sm:text-[26px] font-['Mona_Sans:Medium',sans-serif] font-medium text-[#0e0e0e] mb-3 leading-[32px]">
                       {item.title}
                     </h3>
 
-                    {/* Description */}
+                    {/* Description (16px on mobile, sm:text-[17px]) */}
                     <p className="text-[#646464] text-[16px] sm:text-[17px] font-['Mona_Sans:Regular',sans-serif] leading-[28px] sm:leading-[30px]">
                       {item.description}
                     </p>
@@ -211,7 +222,7 @@ export default function AboutValuesSection({
 
                   {/* Horizontal Divider Line */}
                   <div className="mt-8 pt-2 border-b border-[#e7e7e7] w-full" />
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

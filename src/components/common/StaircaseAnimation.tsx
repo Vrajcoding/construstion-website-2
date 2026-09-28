@@ -8,6 +8,7 @@ export interface StaircaseAnimationProps {
   staggerDelay?: number
   columns?: number
   columnColor?: string
+  useGrid?: boolean
 }
 
 export default function StaircaseAnimation({

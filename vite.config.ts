@@ -13,10 +13,27 @@ export default defineConfig(({ mode }) => {
   return {
     base: process.env.FIGMA_PUBLIC_URL
       ? `${process.env.FIGMA_PUBLIC_URL}/`
-      : "./",
+      : "/",
     build: {
       sourcemap: emitSourcemaps ? "inline" : false,
       minify: !emitSourcemaps,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes("node_modules")) {
+              if (id.includes("react") || id.includes("react-dom")) {
+                return "vendor"
+              }
+              if (id.includes("framer-motion")) {
+                return "motion"
+              }
+              if (id.includes("lucide-react")) {
+                return "icons"
+              }
+            }
+          },
+        },
+      },
     },
     plugins: [
       react(),
@@ -29,6 +46,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         "@": path.resolve(import.meta.dirname, "./src"),
+        "@assets": path.resolve(import.meta.dirname, "./src/assets"),
       },
     },
     server: {

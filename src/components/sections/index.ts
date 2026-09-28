@@ -14,3 +14,7 @@ export * from "./about"
 
 // Blog Specific Sections
 export * from "./blog"
+
+// Contact Specific Sections
+export * from "./contact"
+

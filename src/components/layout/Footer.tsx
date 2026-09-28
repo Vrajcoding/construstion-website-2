@@ -78,9 +78,9 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
       id="contact"
       className="bg-[#0e0e0e] text-white relative overflow-hidden"
     >
-      {/* 2x2 Decorative Grid Pattern in Top-Right Corner */}
+      {/* 2x2 Decorative Grid Pattern in Top-Right Corner (Desktop/Tablet so it never collides with mobile headline text) */}
       <div
-        className="absolute right-0 top-0 grid grid-cols-2 grid-rows-2 w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] lg:w-[200px] lg:h-[200px] pointer-events-none z-0"
+        className="hidden sm:grid absolute right-0 top-0 grid-cols-2 grid-rows-2 sm:w-[140px] sm:h-[140px] lg:w-[180px] lg:h-[180px] pointer-events-none z-0"
         aria-hidden="true"
       >
         <div className="bg-white border border-white" />
@@ -92,7 +92,7 @@ export default function Footer({ onOpenQuote, onNavigate }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top CTA Banner Row */}
         <div className="py-14 sm:py-18 lg:py-24 flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 sm:gap-10">
-          <div className="max-w-[560px]">
+          <div className="max-w-[560px] relative z-10">
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-['Mona_Sans:Medium',sans-serif] font-medium text-white leading-[1.18] sm:leading-[52px] tracking-tight">
               Ready to pull the trigger? <br />
               Get a quote today

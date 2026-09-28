@@ -1,7 +1,8 @@
 import React from "react"
+import { motion } from "framer-motion"
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onAnimationStart" | "onDragStart" | "onDragEnd" | "onDrag"> {
   variant?: "primary" | "outline" | "outline-white" | "yellow" | "white"
   size?: "sm" | "md" | "lg"
   showArrow?: boolean
@@ -41,8 +42,8 @@ export default function Button({
 
   const sizeStyles = {
     sm: "px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm gap-2 min-h-[38px]",
-    md: "px-5 sm:px-7 py-2.5 sm:py-3.5 text-sm sm:text-base gap-2.5 min-h-[46px]",
-    lg: "px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg gap-2.5 sm:gap-3 min-h-[50px] sm:min-h-[54px]",
+    md: "px-[20px] py-[16px] sm:px-[30px] sm:py-[20px] text-sm sm:text-base gap-2.5 min-h-[46px] sm:min-h-[58px]",
+    lg: "px-[20px] py-[20px] sm:px-[38px] sm:py-[26px] text-base sm:text-lg gap-2.5 sm:gap-3 min-h-[56px] sm:min-h-[74px]",
   }
 
   const mobileWidthClass = fullWidthMobile ? "w-full sm:w-auto" : ""
@@ -67,14 +68,17 @@ export default function Button({
   )
 
   return (
-    <button
+    <motion.button
+      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.015 }}
+      transition={{ type: "spring", stiffness: 450, damping: 28 }}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${mobileWidthClass} ${className}`}
       onClick={onClick}
-      {...props}
+      {...(props as any)}
     >
       {showArrow && arrowPosition === "left" && arrowIcon}
       <span>{children}</span>
       {showArrow && arrowPosition === "right" && arrowIcon}
-    </button>
+    </motion.button>
   )
 }

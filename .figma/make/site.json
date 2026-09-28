@@ -1,7 +1,7 @@
 {
-  "description": "Delivers a fully detailed, styled webpage with organized CSS for seamless handoff to agents, streamlining web design and development workflows.",
+  "description": "Modern construction, architectural design, renovation, and structural engineering services.",
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,

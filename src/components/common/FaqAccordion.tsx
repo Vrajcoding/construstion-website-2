@@ -46,7 +46,7 @@ export default function FaqAccordion({
                 aria-expanded={isOpen}
               >
                 <span
-                  className={`text-lg sm:text-2xl lg:text-[38px] font-['Mona_Sans:Medium',sans-serif] font-medium leading-snug sm:leading-[38px] lg:leading-[46px] transition-colors duration-200 ${
+                  className={`text-[18px] sm:text-2xl lg:text-[38px] font-['Mona_Sans:Medium',sans-serif] font-medium leading-snug sm:leading-[38px] lg:leading-[46px] transition-colors duration-200 ${
                     isDark
                       ? "text-white group-hover:text-[#ffd43e]"
                       : "text-[#0e0e0e] group-hover:text-black"

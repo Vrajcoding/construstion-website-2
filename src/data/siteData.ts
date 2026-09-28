@@ -11,34 +11,38 @@ import {
   OfficeItem,
   TeamMemberItem,
   FaqItem,
+  MegaMenuData,
+  MegaMenuLink,
 } from "../types"
 
-// Asset imports from imports directory
-import imgHero from "../../imports/home-page-image.jpg"
-import imgAboutWorker from "../../imports/f9641b74eab7876de42a46053eda0bacf22852e2.png"
-import imgAboutTeam from "../../imports/1ad010fa1382c9d050d9cb909c3a89770a426701.png"
-import imgService1 from "../../imports/b3e4a346bae70ceaf0c89f2ea4affd9de0a49894.png"
-import imgService2 from "../../imports/79dd92e28fbfb330bbcf52d469228d9c4a793783.png"
-import imgService3 from "../../imports/f85c9045cdb0319fa07c80500d2d30e9393696c3.png"
-import imgVideoThumb from "../../imports/55cdf6636d96e94ea6678b173e960498a200267f.png"
-import imgCtaBuilding from "../../imports/wall-image.png"
-import imgWallImage from "../../imports/wall-image.png"
-import imgProject1 from "../../imports/2a19c9c381470d4d62385afa418677c3ba02379b.png"
-import imgProject2 from "../../imports/00c0e6650d0225015d4bdb8a271c67518b0892be.png"
-import imgProject3 from "../../imports/a9da9c8505905e52f88d58ebb52495a1907ac810.png"
-import imgOfficeLa from "../../imports/office-la.png"
-import imgTestimonialStructure from "../../imports/cbe1c1f0dd1d8a41c62cb9b180de6d5834406827.png"
-import imgTestimonialAvatar from "../../imports/a7be56f17b9d8fae3c5224f02b27724b75f4169c.png"
-import imgBlog1 from "../../imports/382844f52488401d19598d23ba66a83216ce0115.png"
-import imgBlog2 from "../../imports/5cd29f14b45346137a6c3cc28f7840f705b60e72.png"
-import imgBlog3 from "../../imports/ea7529eb62807bd8df4481e35977587eb7aaa41e.png"
-import imgRoofBanner from "../../imports/roof_construction_banner.jpg"
-import imgPrinter from "../../imports/printerimage.png"
-import logoAgency from "../../imports/agency.svg"
-import logoApplication from "../../imports/application.svg"
-import logoCompany from "../../imports/company.svg"
-import logoBusiness from "../../imports/business.svg"
-import logoEnterprise from "../../imports/enterprise.svg"
+// Centralized Asset imports from src/assets
+import {
+  imgHero,
+  imgAboutWorker,
+  imgAboutTeam,
+  imgService1,
+  imgService2,
+  imgService3,
+  imgVideoThumb,
+  imgCtaBuilding,
+  imgWallImage,
+  imgProject1,
+  imgProject2,
+  imgProject3,
+  imgOfficeLa,
+  imgTestimonialStructure,
+  imgTestimonialAvatar,
+  imgBlog1,
+  imgBlog2,
+  imgBlog3,
+  imgRoofBanner,
+  imgPrinter,
+  logoAgency,
+  logoApplication,
+  logoCompany,
+  logoBusiness,
+  logoEnterprise,
+} from "../assets"
 
 export const siteImages = {
   hero: imgHero,
@@ -69,7 +73,7 @@ export const navLeftItems: NavItem[] = [
   { label: "CONTACT", href: "#contact" },
 ]
 
-export const megaMenuData = {
+export const megaMenuData: MegaMenuData = {
   mainPages: {
     column1: [
       { label: "HOME (SALES)", href: "#home", route: "home" },
@@ -95,7 +99,6 @@ export const megaMenuData = {
       { label: "CONTACT V1", href: "#contact", route: "contact" },
       { label: "CONTACT V2", href: "#contact", route: "contact" },
       { label: "CONTACT V3", href: "#contact", route: "contact" },
-      { label: "SINGLE PROJECT", href: "#work", route: "work" },
       { label: "SHOP", href: "#home", route: "home" },
       { label: "SHOP SINGLE", href: "#home", route: "home" },
       { label: "REQUEST A QUOTE", href: "#quote", isQuote: true },
@@ -321,8 +324,6 @@ export const testimonialsData: TestimonialItem[] = [
   },
 ]
 
-export const testimonialData: TestimonialItem = testimonialsData[0]
-
 export const blogCategoriesData: BlogCategoryItem[] = [
   {
     id: "remodeling",
@@ -384,27 +385,6 @@ export const blogPostsData: BlogPostItem[] = [
     image: imgBlog3,
     link: "#blog",
   },
-]
-
-export const mainFooterPages = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Services Single", href: "#services" },
-  { label: "Work", href: "#work" },
-  { label: "Work Single", href: "#work" },
-  { label: "Blog", href: "#blog" },
-  { label: "Blog Single", href: "#blog" },
-  { label: "Contact", href: "#contact" },
-]
-
-export const utilityFooterPages = [
-  { label: "Style Guide", href: "#styleguide" },
-  { label: "Start Here", href: "#starthere" },
-  { label: "Password Protected", href: "#password" },
-  { label: "404 Not Found", href: "#404" },
-  { label: "Licenses", href: "#licenses" },
-  { label: "Changelog", href: "#changelog" },
 ]
 
 export const valuesData: ValueItem[] = [

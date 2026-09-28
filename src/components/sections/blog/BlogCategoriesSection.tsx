@@ -1,8 +1,10 @@
 import React from "react"
 import { blogCategoriesData } from "../../../data/siteData"
-import svgRemodeling from "../../../../imports/Remodeling-Artical.svg"
-import svgDesign from "../../../../imports/Design-artical.svg"
-import svgConstruction from "../../../../imports/construction-artical.svg"
+import {
+  svgRemodeling,
+  svgDesign,
+  svgConstruction,
+} from "../../../assets"
 
 export interface BlogCategoriesSectionProps {
   onCategoryClick?: (category: string) => void

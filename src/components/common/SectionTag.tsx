@@ -4,6 +4,7 @@ export interface SectionTagProps {
   text: string
   theme?: "dark" | "light" | "yellow"
   className?: string
+  textClassName?: string
   dualLines?: boolean
   hideLine?: boolean
 }
@@ -12,6 +13,7 @@ export default function SectionTag({
   text,
   theme = "dark",
   className = "",
+  textClassName = "",
   dualLines = false,
   hideLine = false,
 }: SectionTagProps) {
@@ -33,7 +35,7 @@ export default function SectionTag({
         <span className={`w-7 h-[1.5px] ${lineColors[theme]} rounded-full`} />
       )}
       <span
-        className={`font-['Mona_Sans:Medium',sans-serif] text-[15px] sm:text-[16px] font-medium tracking-[0.96px] uppercase ${textColors[theme]}`}
+        className={`font-['Mona_Sans:Medium',sans-serif] ${textClassName || "text-[15px] sm:text-[16px]"} font-medium tracking-[0.96px] uppercase ${textColors[theme]}`}
       >
         {text}
       </span>

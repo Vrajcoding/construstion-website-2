@@ -7,11 +7,9 @@ export function useModals() {
   const [selectedService, setSelectedService] = useState("General contracting")
   const [cartCount, setCartCount] = useState(0)
 
-  const openQuote = useCallback((serviceName?: string) => {
-    if (serviceName) {
-      setSelectedService(serviceName)
-    }
-    setIsQuoteOpen(true)
+  const openQuote = useCallback((_serviceName?: string) => {
+    // Quote modal popup disabled per user request
+    setIsQuoteOpen(false)
   }, [])
 
   const closeQuote = useCallback(() => {

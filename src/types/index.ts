@@ -2,7 +2,24 @@ export interface NavItem {
   label: string
   href: string
   hasDropdown?: boolean
-  dropdownItems?: { label: string href: string }[]
+  dropdownItems?: { label: string; href: string }[]
+}
+
+export interface MegaMenuLink {
+  label: string
+  href: string
+  route?: string
+  isQuote?: boolean
+  isBold?: boolean
+}
+
+export interface MegaMenuData {
+  mainPages: {
+    column1: MegaMenuLink[]
+    column2: MegaMenuLink[]
+    column3: MegaMenuLink[]
+  }
+  utilityPages: MegaMenuLink[]
 }
 
 export interface StatItem {

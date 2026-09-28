@@ -1,7 +1,6 @@
 import React from "react"
 import SectionTag from "../common/SectionTag"
 import Button from "../common/Button"
-import DecorativeGrid from "../common/DecorativeGrid"
 import { blogPostsData } from "../../data/siteData"
 
 export interface BlogSectionProps {
@@ -11,11 +10,6 @@ export interface BlogSectionProps {
 export default function BlogSection({ onSelectArticle }: BlogSectionProps) {
   return (
     <section id="blog" className="bg-white py-14 sm:py-20 lg:py-28 relative overflow-hidden">
-      {/* Bottom-Right 4-Boxes Staircase Accent */}
-      <div className="absolute bottom-0 right-0 pointer-events-none z-0">
-        <DecorativeGrid pattern="four-boxes" fillColor="yellow" />
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Centered Section Header */}
         <div className="text-center space-y-3 sm:space-y-4 max-w-2xl mx-auto mb-10 sm:mb-16">
@@ -35,14 +29,16 @@ export default function BlogSection({ onSelectArticle }: BlogSectionProps) {
             >
               {/* Card Body */}
               <div className="flex flex-col">
-                {/* Responsive Aspect Ratio Image */}
-                <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] overflow-hidden bg-neutral-900 rounded-none mb-5 sm:mb-6">
+                {/* Responsive Aspect Ratio Image with signature Construcfy card hover tilt & dark shadow */}
+                <div className="card-image-wrap relative w-full aspect-[16/10] sm:aspect-[4/3] bg-[#0e0e0e] rounded-none mb-5 sm:mb-6">
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover grayscale contrast-105 group-hover:scale-105 transition-transform duration-500 rounded-none"
+                    className="w-full h-full object-cover grayscale contrast-105 rounded-none"
                   />
+                  <div className="card-image-shadow" />
                 </div>
+
 
                 {/* Title & Excerpt */}
                 <div className="flex flex-col gap-2.5 mb-5 sm:mb-6">

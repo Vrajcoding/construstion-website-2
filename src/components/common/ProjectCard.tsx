@@ -17,16 +17,18 @@ export default function ProjectCard({
   return (
     <div
       onClick={onClick}
-      className={`group cursor-pointer relative ${aspectHeight} overflow-hidden bg-neutral-900 rounded-none shadow-md transition-all duration-300 ${className}`}
+      className={`card-image-wrap group cursor-pointer relative ${aspectHeight} bg-[#0e0e0e] rounded-none shadow-md transition-all duration-300 ${className}`}
     >
       <img
         src={project.image}
         alt={project.title}
-        className="w-full h-full object-cover grayscale contrast-105 group-hover:scale-105 transition-transform duration-700 rounded-none"
+        className="w-full h-full object-cover grayscale contrast-105 rounded-none"
       />
+      <div className="card-image-shadow" />
 
-      {/* Dark Gradient Overlay with Text */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-5 sm:p-7 lg:p-10 flex flex-col justify-end">
+
+      {/* Dark Gradient Overlay with Text (z-10 ensures text stays in front of hover shadow and rotating image) */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-5 sm:p-7 lg:p-10 flex flex-col justify-end pointer-events-none">
         <h3 className="text-xl sm:text-2xl lg:text-[26px] xl:text-[28px] font-['Mona_Sans:Semi_Bold',sans-serif] font-semibold text-white leading-snug sm:leading-[36px] mb-3 sm:mb-4 group-hover:text-[#ffd43e] transition-colors">
           {project.title}
         </h3>

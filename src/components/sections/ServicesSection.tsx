@@ -1,7 +1,6 @@
 import React from "react"
 import SectionTag from "../common/SectionTag"
 import Button from "../common/Button"
-import DecorativeGrid from "../common/DecorativeGrid"
 import { servicesData } from "../../data/siteData"
 
 export interface ServicesSectionProps {
@@ -18,10 +17,6 @@ export default function ServicesSection({
       id="services"
       className="relative bg-white py-14 sm:py-20 lg:py-24 overflow-hidden"
     >
-      {/* Bottom-left signature 2x2 black geometric grid accent */}
-      <div className="absolute bottom-0 left-0 z-10 pointer-events-none">
-        <DecorativeGrid pattern="hero-checker" fillColor="dark" />
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with CTAs and Gray Divider Line */}
@@ -74,13 +69,14 @@ export default function ServicesSection({
                 onClick={() => onSelectService?.(service.title)}
                 className={`group cursor-pointer flex flex-col ${stairStepClass} transition-all duration-300`}
               >
-                {/* Responsive Image Container */}
-                <div className="relative w-full aspect-[4/3] sm:aspect-square md:aspect-[4/3] lg:aspect-[4/5] overflow-hidden bg-neutral-100 rounded-none mb-5 sm:mb-6">
+                {/* Responsive Image Container with signature Construcfy card hover tilt & dark shadow */}
+                <div className="card-image-wrap relative w-full aspect-[4/3] sm:aspect-square md:aspect-[4/3] lg:aspect-[4/5] bg-[#0e0e0e] rounded-none mb-5 sm:mb-6">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover grayscale contrast-105 transition-transform duration-500 group-hover:scale-105 rounded-none"
+                    className="w-full h-full object-cover grayscale contrast-105 rounded-none"
                   />
+                  <div className="card-image-shadow" />
                 </div>
 
                 {/* Card Text Content with Bottom Divider Border */}

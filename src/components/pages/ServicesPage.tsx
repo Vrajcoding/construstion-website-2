@@ -3,13 +3,15 @@ import SectionTag from "../common/SectionTag"
 import DecorativeGrid from "../common/DecorativeGrid"
 import { servicesPageData } from "../../data/siteData"
 
-// Import exact SVG assets from imports directory
-import iconPlanning from "../../../imports/Project planning.svg"
-import iconManagement from "../../../imports/PRoject management.svg"
-import iconContracting from "../../../imports/general-construction.svg"
-import iconInterior from "../../../imports/Interior design.svg"
-import iconExterior from "../../../imports/Exterior design.svg"
-import iconSpace from "../../../imports/space-planning.svg"
+// Import exact SVG assets from centralized src/assets
+import {
+  iconPlanning,
+  iconManagement,
+  iconContracting,
+  iconInterior,
+  iconExterior,
+  iconSpace,
+} from "../../assets"
 
 export interface ServicesPageProps {
   onSelectService?: (title: string) => void

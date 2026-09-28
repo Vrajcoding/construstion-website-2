@@ -8,7 +8,9 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@assets": ["./src/assets"],
+      "@assets/*": ["./src/assets/*"]
     },
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
@@ -19,5 +21,6 @@
     "strict": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "imports", "vite.config.ts", "*.d.ts"]
+  "include": ["src", "imports", "vite.config.ts", "*.d.ts"],
+  "exclude": ["node_modules", "dist"]
 }

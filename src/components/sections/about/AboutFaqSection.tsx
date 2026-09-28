@@ -6,7 +6,7 @@ import { faqData } from "../../../data/siteData"
 
 export default function AboutFaqSection() {
   return (
-    <section className="bg-[#0e0e0e] text-white py-14 sm:py-20 lg:py-28 relative overflow-hidden">
+    <section className="bg-[#0e0e0e] text-white py-[120px] sm:py-20 lg:py-56 relative overflow-hidden">
       {/* Top-Left Stepped Decorative Grid Pattern */}
       <div className="absolute top-0 left-0 z-0 pointer-events-none">
         <DecorativeGrid pattern="top-left" fillColor="white" />
@@ -19,10 +19,11 @@ export default function AboutFaqSection() {
             text="FAQS"
             theme="light"
             dualLines
+            textClassName="text-[14px] sm:text-[16px]"
             className="mb-4 sm:mb-6"
           />
 
-          <h2 className="text-3xl sm:text-5xl lg:text-[64px] font-['Mona_Sans:Medium',sans-serif] font-medium text-white tracking-tight leading-[1.1] max-w-3xl mx-auto">
+          <h2 className="text-[32px] sm:text-5xl lg:text-[62px] font-['Mona_Sans:Medium',sans-serif] font-medium text-white tracking-tight leading-[1.08] lg:leading-[1.1] max-w-3xl mx-auto">
             Frequently <br />
             asked questions
           </h2>

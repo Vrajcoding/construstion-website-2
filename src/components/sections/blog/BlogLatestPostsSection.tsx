@@ -63,14 +63,16 @@ export default function BlogLatestPostsSection() {
               className="group flex flex-col justify-between cursor-pointer"
             >
               <div>
-                {/* Post Image */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden bg-neutral-900 shadow-md">
+                {/* Post Image with signature Construcfy card hover tilt & dark shadow */}
+                <div className="card-image-wrap relative w-full aspect-[4/3] bg-[#0e0e0e] shadow-md">
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover grayscale contrast-105 group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover grayscale contrast-105"
                   />
+                  <div className="card-image-shadow" />
                 </div>
+
 
                 {/* Title (22px on mobile, 24px on desktop) */}
                 <h3 className="text-[22px] sm:text-[22px] lg:text-[24px] font-['Mona_Sans:Semi_Bold',sans-serif] font-semibold text-[#0e0e0e] mt-6 mb-3 group-hover:text-[#ffd43e] transition-colors leading-[1.34] lg:leading-[34px] line-clamp-2">

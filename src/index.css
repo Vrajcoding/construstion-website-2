@@ -149,3 +149,38 @@ body,
 ::-webkit-scrollbar-thumb:hover {
   background: #a0a0a0;
 }
+
+/* Signature Construcfy Card Hover Animation: Image slight counter-clockwise rotation (-3.5deg) + scale + dark backdrop shadow */
+.card-image-wrap {
+  position: relative;
+  overflow: hidden;
+  background-color: #0e0e0e;
+  transform: translateZ(0);
+}
+
+.card-image-wrap img,
+.card-image-wrap > img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.group:hover .card-image-wrap img,
+.card-image-wrap:hover img {
+  transform: scale(1.15) rotate(-3.5deg);
+}
+
+.card-image-shadow {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(14, 14, 14, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.group:hover .card-image-shadow,
+.card-image-wrap:hover .card-image-shadow {
+  opacity: 1;
+}
