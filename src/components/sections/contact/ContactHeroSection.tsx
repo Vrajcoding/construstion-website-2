@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { SocialIcons, DecorativeGrid, Button } from "../../common"
+import { iconEmail } from "../../../assets"
 
 export interface ContactHeroSectionProps {
   onOpenQuote?: () => void
@@ -54,7 +55,7 @@ export default function ContactHeroSection({ onOpenQuote }: ContactHeroSectionPr
             <div className="mt-8 sm:mt-10 pb-8 sm:pb-10 border-b border-[#262626] flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
               <div className="w-[50px] sm:w-[54px] h-[36px] sm:h-[40px] shrink-0 flex items-center justify-start">
                 <img
-                  src="/email-img.svg"
+                  src={iconEmail}
                   alt="Email"
                   className="w-full h-full object-contain"
                 />

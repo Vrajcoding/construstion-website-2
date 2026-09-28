@@ -3,14 +3,23 @@ import SectionTag from "../common/SectionTag"
 import DecorativeGrid from "../common/DecorativeGrid"
 import { servicesPageData } from "../../data/siteData"
 
-// Service Line-art Icons from public/
+import {
+  iconPlanning,
+  iconManagement,
+  iconContracting,
+  iconInterior,
+  iconExterior,
+  iconSpace,
+} from "../../assets"
+
+// Service Line-art Icons bundled with Vite
 const serviceIcons: Record<string, string> = {
-  planning: "/project-planning.svg",
-  management: "/project-management.svg",
-  contracting: "/general-construction.svg",
-  interior: "/interior-design.svg",
-  exterior: "/exterior-design.svg",
-  space: "/space-planning.svg",
+  planning: iconPlanning,
+  management: iconManagement,
+  contracting: iconContracting,
+  interior: iconInterior,
+  exterior: iconExterior,
+  space: iconSpace,
 }
 
 export interface ServicesPageProps {

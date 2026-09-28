@@ -1,6 +1,12 @@
 import React from "react"
 import { blogCategoriesData } from "../../../data/siteData"
 
+import {
+  svgRemodeling,
+  svgDesign,
+  svgConstruction,
+} from "../../../assets"
+
 export interface BlogCategoriesSectionProps {
   onCategoryClick?: (category: string) => void
 }
@@ -9,9 +15,9 @@ export default function BlogCategoriesSection({
   onCategoryClick,
 }: BlogCategoriesSectionProps) {
   const categoryIcons: Record<string, string> = {
-    remodeling: "/remodeling-article.svg",
-    design: "/design-article.svg",
-    construction: "/construction-article.svg",
+    remodeling: svgRemodeling,
+    design: svgDesign,
+    construction: svgConstruction,
   }
 
   return (
@@ -34,7 +40,7 @@ export default function BlogCategoriesSection({
                 {/* SVG Icon with Subtle Hover Lift */}
                 <div className="mb-5 transform group-hover:-translate-y-1 transition-transform duration-300">
                   <img
-                    src={categoryIcons[category.iconType] || "/remodeling-article.svg"}
+                    src={categoryIcons[category.iconType] || svgRemodeling}
                     alt={category.title}
                     className="w-[54px] h-[54px] sm:w-14 sm:h-14 object-contain"
                   />
