@@ -15,56 +15,54 @@ import {
   MegaMenuLink,
 } from "../types"
 
-import {
-  imgHero,
-  imgRoofBanner,
-  imgCtaBuilding,
-  imgWallImage,
-  imgPrinter,
-  imgOfficeLa,
-  imgAboutWorker,
-  imgAboutTeam,
-  imgService1,
-  imgService2,
-  imgService3,
-  imgVideoThumb,
-  imgProject1,
-  imgProject2,
-  imgProject3,
-  imgTestimonialStructure,
-  imgTestimonialAvatar,
-  imgBlog1,
-  imgBlog2,
-  imgBlog3,
-  logoAgency,
-  logoApplication,
-  logoCompany,
-  logoBusiness,
-  logoEnterprise,
-} from "../assets"
-
-// Centralized asset exports bundled with Vite
+// Centralized static asset paths referencing public/images/<category>/
 export const siteImages = {
-  hero: imgHero,
-  aboutWorker: imgAboutWorker,
-  aboutTeam: imgAboutTeam,
-  roofBanner: imgRoofBanner,
-  typewriterBanner: imgPrinter,
-  service1: imgService1,
-  service2: imgService2,
-  service3: imgService3,
-  videoThumb: imgVideoThumb,
-  ctaBuilding: imgCtaBuilding,
-  wallImage: imgWallImage,
-  project1: imgProject1,
-  project2: imgProject2,
-  project3: imgProject3,
-  testimonialStructure: imgTestimonialStructure,
-  testimonialAvatar: imgTestimonialAvatar,
-  blog1: imgBlog1,
-  blog2: imgBlog2,
-  blog3: imgBlog3,
+  hero: "/images/home/home-page-image.jpg",
+  aboutWorker: "/images/about/f9641b74eab7876de42a46053eda0bacf22852e2.png",
+  aboutTeam: "/images/about/1ad010fa1382c9d050d9cb909c3a89770a426701.png",
+  roofBanner: "/images/about/roof_construction_banner.jpg",
+  typewriterBanner: "/images/blog/printerimage.png",
+  service1: "/images/services/b3e4a346bae70ceaf0c89f2ea4affd9de0a49894.png",
+  service2: "/images/services/79dd92e28fbfb330bbcf52d469228d9c4a793783.png",
+  service3: "/images/services/f85c9045cdb0319fa07c80500d2d30e9393696c3.png",
+  videoThumb: "/images/home/55cdf6636d96e94ea6678b173e960498a200267f.png",
+  ctaBuilding: "/images/home/wall-image.png",
+  wallImage: "/images/home/wall-image.png",
+  project1: "/images/projects/2a19c9c381470d4d62385afa418677c3ba02379b.png",
+  project2: "/images/projects/00c0e6650d0225015d4bdb8a271c67518b0892be.png",
+  project3: "/images/projects/a9da9c8505905e52f88d58ebb52495a1907ac810.png",
+  testimonialStructure: "/images/home/cbe1c1f0dd1d8a41c62cb9b180de6d5834406827.png",
+  testimonialAvatar: "/images/home/a7be56f17b9d8fae3c5224f02b27724b75f4169c.png",
+  blog1: "/images/blog/382844f52488401d19598d23ba66a83216ce0115.png",
+  blog2: "/images/blog/5cd29f14b45346137a6c3cc28f7840f705b60e72.png",
+  blog3: "/images/blog/ea7529eb62807bd8df4481e35977587eb7aaa41e.png",
 }
+
+const imgHero = siteImages.hero
+const imgAboutWorker = siteImages.aboutWorker
+const imgAboutTeam = siteImages.aboutTeam
+const imgService1 = siteImages.service1
+const imgService2 = siteImages.service2
+const imgService3 = siteImages.service3
+const imgVideoThumb = siteImages.videoThumb
+const imgCtaBuilding = siteImages.ctaBuilding
+const imgWallImage = siteImages.wallImage
+const imgProject1 = siteImages.project1
+const imgProject2 = siteImages.project2
+const imgProject3 = siteImages.project3
+const imgOfficeLa = "/images/about/office-la.png"
+const imgTestimonialStructure = siteImages.testimonialStructure
+const imgTestimonialAvatar = siteImages.testimonialAvatar
+const imgBlog1 = siteImages.blog1
+const imgBlog2 = siteImages.blog2
+const imgBlog3 = siteImages.blog3
+const imgRoofBanner = siteImages.roofBanner
+const imgPrinter = siteImages.typewriterBanner
+const logoAgency = "/images/home/agency.svg"
+const logoApplication = "/images/home/application.svg"
+const logoCompany = "/images/home/company.svg"
+const logoBusiness = "/images/home/business.svg"
+const logoEnterprise = "/images/home/enterprise.svg"
 
 export const navLeftItems: NavItem[] = [
   { label: "HOME", href: "#home" },
