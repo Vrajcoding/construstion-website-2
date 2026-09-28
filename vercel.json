@@ -5,7 +5,7 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "source": "/((?!assets/|favicon|robots\\.txt).*)",
+      "source": "/((?!assets/|favicon|robots\\.txt|.*\\.(?:png|jpg|jpeg|svg|webp|ico|css|js)).*)",
       "destination": "/index.html"
     }
   ],
