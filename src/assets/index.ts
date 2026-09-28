@@ -46,20 +46,20 @@ import logoBusiness from "./business.svg"
 import logoEnterprise from "./enterprise.svg"
 
 // --- Service & Feature Line-art Icons ---
-import iconPlanning from "./Project planning.svg"
-import iconManagement from "./PRoject management.svg"
+import iconPlanning from "./project-planning.svg"
+import iconManagement from "./project-management.svg"
 import iconContracting from "./general-construction.svg"
-import iconInterior from "./Interior design.svg"
-import iconExterior from "./Exterior design.svg"
+import iconInterior from "./interior-design.svg"
+import iconExterior from "./exterior-design.svg"
 import iconSpace from "./space-planning.svg"
 
 // --- Blog Category Line-art Icons ---
-import svgRemodeling from "./Remodeling-Artical.svg"
-import svgDesign from "./Design-artical.svg"
-import svgConstruction from "./construction-artical.svg"
+import svgRemodeling from "./remodeling-article.svg"
+import svgDesign from "./design-article.svg"
+import svgConstruction from "./construction-article.svg"
 
 // --- Contact Icons ---
-import iconEmail from "./Email-img.svg"
+import iconEmail from "./email-img.svg"
 
 export {
   // Photos
