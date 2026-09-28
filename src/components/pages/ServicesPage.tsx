@@ -3,28 +3,19 @@ import SectionTag from "../common/SectionTag"
 import DecorativeGrid from "../common/DecorativeGrid"
 import { servicesPageData } from "../../data/siteData"
 
-// Import exact SVG assets from centralized src/assets
-import {
-  iconPlanning,
-  iconManagement,
-  iconContracting,
-  iconInterior,
-  iconExterior,
-  iconSpace,
-} from "../../assets"
+// Service Line-art Icons from public/
+const serviceIcons: Record<string, string> = {
+  planning: "/project-planning.svg",
+  management: "/project-management.svg",
+  contracting: "/general-construction.svg",
+  interior: "/interior-design.svg",
+  exterior: "/exterior-design.svg",
+  space: "/space-planning.svg",
+}
 
 export interface ServicesPageProps {
   onSelectService?: (title: string) => void
   onOpenQuote?: () => void
-}
-
-const serviceIcons: Record<string, string> = {
-  planning: iconPlanning,
-  management: iconManagement,
-  contracting: iconContracting,
-  interior: iconInterior,
-  exterior: iconExterior,
-  space: iconSpace,
 }
 
 export default function ServicesPage({ onSelectService }: ServicesPageProps) {
