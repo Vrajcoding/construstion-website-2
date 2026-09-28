@@ -34,7 +34,7 @@ export default function AboutStorySection({
               <span className="block whitespace-normal lg:whitespace-nowrap">An exceptional quality</span>
               <span className="block whitespace-normal lg:whitespace-nowrap">that can’t be beaten</span>
             </h2>
-            <p className="text-[#646464] text-base sm:text-lg lg:text-[18px] font-['Mona_Sans:Regular',sans-serif] leading-relaxed sm:leading-[30px] pt-1 max-w-xl">
+            <p className="text-[#646464] text-base sm:text-lg lg:text-[18px] font-['Mona_Sans:Regular',sans-serif] leading-relaxed sm:leading-[30px] pt-1 max-w-xl lg:max-w-[660px]">
               Lorem ipsum dolor sit amet consectetur vitae pulvinar luctus quam
               ornare imperdiet bibendum consectetur amet morbi mauris non semper
               eget scelerisque proin eros sodales.
@@ -95,7 +95,7 @@ export default function AboutStorySection({
               <span className="block whitespace-normal lg:whitespace-nowrap">Our mission is to deliver</span>
               <span className="block whitespace-normal lg:whitespace-nowrap">high quality work</span>
             </h2>
-            <p className="text-[#646464] text-base sm:text-lg lg:text-[18px] font-['Mona_Sans:Regular',sans-serif] leading-relaxed sm:leading-[30px] pt-1 max-w-xl">
+            <p className="text-[#646464] text-base sm:text-lg lg:text-[18px] font-['Mona_Sans:Regular',sans-serif] leading-relaxed sm:leading-[30px] pt-1 max-w-xl lg:max-w-[660px]">
               Lorem ipsum dolor sit amet consectetur urna sed odio id mattis
               donec viverra sed neque sit porta mauris eros aliquet volutpat eu
               consequat at turpis aliquet maecenas porta dignissim.

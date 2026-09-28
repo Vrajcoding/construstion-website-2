@@ -50,7 +50,7 @@ export default function TestimonialsSection() {
             </h2>
           </div>
 
-          <p className="text-[#646464] text-base sm:text-lg leading-relaxed sm:leading-[30px] font-['Mona_Sans:Medium',sans-serif] max-w-md">
+          <p className="text-[#646464] text-base sm:text-lg leading-relaxed sm:leading-[30px] font-['Mona_Sans:Medium',sans-serif] max-w-md lg:max-w-[520px]">
             Lorem ipsum dolor sit amet consectetur senectus velit faucibus
             quisque at ut vitae platea justo nec mattis.
           </p>

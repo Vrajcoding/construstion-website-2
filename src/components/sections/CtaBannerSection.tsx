@@ -49,7 +49,7 @@ export default function CtaBannerSection({
           </h2>
 
           {/* Description Copy */}
-          <p className="text-base sm:text-lg text-[#2f2f2f] leading-relaxed sm:leading-[28px] font-['Mona_Sans:Regular',sans-serif] max-w-lg">
+          <p className="text-base sm:text-lg text-[#2f2f2f] leading-relaxed sm:leading-[28px] font-['Mona_Sans:Regular',sans-serif] max-w-lg lg:max-w-[600px]">
             Lorem ipsum dolor sit amet consectetur senectus velit faucibus non
             quisque at ut vitae platea justo nec mattis adipiscing donec tellus id.
           </p>

@@ -45,7 +45,7 @@ export default function ContactHeroSection({ onOpenQuote }: ContactHeroSectionPr
               Contact us
             </h1>
 
-            <p className="text-[#c5c5c5] text-base sm:text-lg leading-[26px] sm:leading-[30px] mt-4 sm:mt-6 max-w-lg">
+            <p className="text-[#c5c5c5] text-base sm:text-lg leading-[26px] sm:leading-[30px] mt-4 sm:mt-6 max-w-lg lg:max-w-xl">
               Felis nec et augue in id gravida mauris rhoncus vitae nibh
               mollis suspendisse nunc sapien pretium cras.
             </p>

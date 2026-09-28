@@ -138,7 +138,7 @@ export default function VideoSection({
             </h2>
 
             {/* Paragraph Copy */}
-            <p className="text-[#c5c5c5] text-base leading-relaxed sm:leading-[28px] font-['Mona_Sans:Regular',sans-serif] line-clamp-3 max-w-xl">
+            <p className="text-[#c5c5c5] text-base leading-relaxed sm:leading-[28px] font-['Mona_Sans:Regular',sans-serif] line-clamp-2 max-w-2xl">
               Lorem ipsum dolor sit amet consectetur senectus velit faucibus
               non quisque at ut vitae platea justo nec mattis adipiscing donec
               tellus id vulputate ac nulla ut in aliquam ut pulvinar

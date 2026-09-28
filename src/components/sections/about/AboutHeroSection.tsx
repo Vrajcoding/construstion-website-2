@@ -26,7 +26,7 @@ export default function AboutHeroSection({
         </h1>
 
         {/* Centered Subtitle Paragraph (18px on large display) */}
-        <p className="text-[#0e0e0e]/80 text-base sm:text-lg lg:text-[18px] font-['Mona_Sans:Regular',sans-serif] leading-relaxed sm:leading-[30px] max-w-2xl mx-auto mt-5 sm:mt-8">
+        <p className="text-[#0e0e0e]/80 text-base sm:text-lg lg:text-[18px] font-['Mona_Sans:Regular',sans-serif] leading-relaxed sm:leading-[30px] max-w-2xl lg:max-w-4xl mx-auto mt-5 sm:mt-8">
           Lorem ipsum dolor sit amet consectetur ultrices libero tellus
           vulputate sed eget nisl sapien condimentum. Integer magna rutrum
           iaculis nisl elit magna neque arcu.
